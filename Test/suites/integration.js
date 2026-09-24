@@ -80,6 +80,43 @@ function runIntegrationTests(h, api, meta, fx, loadScript, scriptFile) {
     }
   });
 
+  // ---------------- 精简版：无 APP 分流 / 家宽聚合 ----------------
+  if (!meta.full) {
+    h.section('集成测试 · 精简版分组');
+    h.test('无 APP 分流组，MATCH 走默认代理', () => {
+      const out = api.main(fx.typicalSubscription());
+      for (const name of ['Google', 'AI', 'Telegram', 'Steam', 'AdBlock', '漏网之鱼', '手动选择']) {
+        h.assert(!groupByName(out['proxy-groups'], name), `不应存在 ${name}`);
+      }
+      h.assert(out.rules.includes('MATCH,默认代理'), 'MATCH 应指向默认代理');
+      h.assert(!out.rules.some((rule) => /,(Google|AI|Telegram|Steam|AdBlock)$/.test(rule)), '不应生成 APP 分流规则');
+      const def = groupByName(out['proxy-groups'], '默认代理');
+      for (const name of ['香港', '日本', '美国', '新加坡', '台湾省', '低倍率节点', '高倍率节点', '自动选择']) {
+        h.assert(def.proxies.includes(name), `默认代理应含 ${name}`);
+      }
+    });
+    h.test('家宽跨地区聚合，不进入地区组', () => {
+      const cfg = fx.typicalSubscription();
+      cfg.proxies.push(
+        { name: '香港家宽 01', type: 'ss', server: 'hkh.example.com', port: 443, cipher: 'aes-256-gcm', password: 'x' },
+        { name: '日本住宅 02', type: 'ss', server: 'jph.example.com', port: 443, cipher: 'aes-256-gcm', password: 'x' },
+        { name: 'US Home 03', type: 'ss', server: 'ush.example.com', port: 443, cipher: 'aes-256-gcm', password: 'x' },
+      );
+      const out = api.main(cfg);
+      const home = groupByName(out['proxy-groups'], '家宽');
+      h.assert(home, '应生成家宽组');
+      h.assert(home.type === 'select', '家宽组应为 select');
+      h.assert(home.proxies.includes('🇭🇰 香港家宽 01'));
+      h.assert(home.proxies.includes('🇯🇵 日本住宅 02'));
+      h.assert(home.proxies.includes('🇺🇸 US Home 03'));
+      h.assert(home.proxies.includes('家宽-自动选择'), '家宽应带测速子组');
+      h.assert(!groupByName(out['proxy-groups'], '香港').proxies.includes('🇭🇰 香港家宽 01'), '家宽不应进入香港组');
+      h.assert(!groupByName(out['proxy-groups'], '日本').proxies.includes('🇯🇵 日本住宅 02'), '家宽不应进入日本组');
+      h.assert(groupByName(out['proxy-groups'], '默认代理').proxies.includes('家宽'), '默认代理应含家宽');
+      h.assert(groupByName(out['proxy-groups'], 'GLOBAL').proxies.includes('家宽'), 'GLOBAL 应含家宽');
+    });
+  }
+
   // ---------------- DNS 与 hosts ----------------
   h.section('集成测试 · DNS 与 hosts');
   h.test('默认与代理服务器 DNS 使用各自的固定公共 DNS；无专属策略时私有 DNS 合并写入节点域名 policy', () => {
@@ -346,12 +383,13 @@ function runIntegrationTests(h, api, meta, fx, loadScript, scriptFile) {
       h.assertEqual(groupByName(out['proxy-groups'], '香港').hidden, true);
     }),
   );
-  h.test('分流组添加所有节点=true → 分流组含全部节点', () =>
+  h.test('分流组添加所有节点=true → 分流组含全部节点', () => {
+    if (!meta.full) return;
     withOptions(api, { 分流组添加所有节点: true }, () => {
       const out = api.main(fx.minimalSubscription());
       h.assert(groupByName(out['proxy-groups'], 'AI').proxies.includes('🇭🇰 香港 A'), 'AI 组应含全部节点');
-    }),
-  );
+    });
+  });
   h.test('屏蔽国外QUIC 开关：true 生成 / false 移除 QUIC 规则与 cn_additional', () => {
     // true（默认）→ 生成 cn_additional 规则集
     h.assert(api.main(fx.minimalSubscription())['rule-providers'].cn_additional, 'cn_additional 规则集应生成');
@@ -363,21 +401,23 @@ function runIntegrationTests(h, api, meta, fx, loadScript, scriptFile) {
       h.assert(out['rule-providers'].cn, 'cn 规则集仍应生成（供 nameserver-policy 使用）');
     });
   });
-  h.test('关闭 AI 分流组 → 移除组/规则/规则集', () =>
+  h.test('关闭 AI 分流组 → 移除组/规则/规则集', () => {
+    if (!meta.full) return;
     withOptions(api, { AI: false }, () => {
       const out = api.main(fx.minimalSubscription());
       h.assert(!groupByName(out['proxy-groups'], 'AI'), 'AI 组应被移除');
       h.assert(!out.rules.includes('RULE-SET,ai,AI'), 'AI 规则应被移除');
       h.assert(!out['rule-providers'].ai, 'ai 规则集应被移除');
-    }),
-  );
-  h.test('关闭手动选择基础组 → 默认代理不含手动选择', () =>
+    });
+  });
+  h.test('关闭手动选择基础组 → 默认代理不含手动选择', () => {
+    if (!meta.full) return;
     withOptions(api, { 手动选择: false }, () => {
       const out = api.main(fx.minimalSubscription());
       h.assert(!groupByName(out['proxy-groups'], '手动选择'), '手动选择组应被移除');
       h.assert(!groupByName(out['proxy-groups'], '默认代理').proxies.includes('手动选择'), '默认代理不应含手动选择');
-    }),
-  );
+    });
+  });
   h.test('过滤非地区节点=false → 保留信息节点', () =>
     withOptions(api, { 过滤非地区节点: false }, () => {
       const out = api.main(fx.minimalSubscription());
@@ -489,10 +529,11 @@ function runIntegrationTests(h, api, meta, fx, loadScript, scriptFile) {
     h.assert(groupByName(out['proxy-groups'], '默认代理').proxies.includes('自建节点'), '默认代理应含自建节点组');
     h.assert(groupByName(out['proxy-groups'], 'GLOBAL').proxies.includes('自建节点'), 'GLOBAL 应含自建节点组');
 
-    // 手动选择（includeAll 基础组）应含自定义节点
+    // includeAll 测速组应含自定义节点
+    const includeAllGroupName = meta.full ? '手动选择' : '自动选择';
     h.assert(
-      groupByName(out['proxy-groups'], '手动选择').proxies.includes('🇭🇰 自建-香港 01 | 中转'),
-      '手动选择应含自定义节点',
+      groupByName(out['proxy-groups'], includeAllGroupName).proxies.includes('🇭🇰 自建-香港 01 | 中转'),
+      `${includeAllGroupName}应含自定义节点`,
     );
 
     // 自定义节点域名不应进入 fake-ip-filter（不参与 DNS 域名处理）
@@ -598,8 +639,8 @@ function runIntegrationTests(h, api, meta, fx, loadScript, scriptFile) {
       // 自定义节点仍参与其他策略组（默认代理/手动选择）；链式中转只放订阅节点，不再形成回环
       h.assert(groupByName(out['proxy-groups'], '默认代理').proxies.includes('链式落地'), '默认代理应含链式落地组');
       h.assert(
-        groupByName(out['proxy-groups'], '手动选择').proxies.includes('🇭🇰 自建-香港 01 | 中转'),
-        '手动选择应含自建节点',
+        groupByName(out['proxy-groups'], meta.full ? '手动选择' : '自动选择').proxies.includes('🇭🇰 自建-香港 01 | 中转'),
+        `${meta.full ? '手动选择' : '自动选择'}应含自建节点`,
       );
       h.assert(global.proxies.includes('链式落地'), 'GLOBAL 应含链式落地组');
     });

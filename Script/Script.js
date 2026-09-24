@@ -1,5 +1,7 @@
 /**
  * mihomo配置覆写脚本（精简版）
+ * 无 APP 分流；规则模式走国内直连 + 默认代理。
+ * 默认代理 / GLOBAL：地区聚合、高低倍率、家宽（跨地区合并）、自动选择测速。
  * 作者：AIsouler
  * 源仓库：https://github.com/AIsouler/MyClash
  * 脚本链接：https://raw.githubusercontent.com/AIsouler/MyClash/main/Script/Script.js
@@ -18,25 +20,16 @@ const Compatible_With_Bettbox = { ruleOptionsEnable: true };
  */
 const ruleOptionsEnable = {
   // 基础策略组
-  手动选择: true, // 是否启用手动选择策略组
-  自动选择: true, // 是否启用自动选择策略组
-
-  // 以下为分流策略配置
-  Google: true, // Google服务
-  AI: true, // 国外AI服务
-  Telegram: true, // Telegram通讯软件
-  Steam: true, // Steam游戏平台
-  AdBlock: true, // 广告拦截
+  自动选择: true, // 是否启用自动选择（url-test 测速）策略组
 
   // 以下为非分流策略配置
   极简模式: false, // 是否启用极简模式
-  生成地区自动选择组: true, // 是否生成地区自动选择策略组
-  隐藏地区手动选择组: false, // 是否隐藏地区手动选择策略组
+  生成地区自动选择组: true, // 是否生成地区/家宽自动选择（测速）策略组
+  隐藏地区手动选择组: false, // 是否隐藏地区/家宽手动选择策略组
   生成倍率组: true, // 是否生成低倍率/高倍率策略组
-  分流组添加所有节点: false, // 是否为分流策略组添加所有节点
   过滤低倍率节点: false, // 是否过滤低倍率节点
   过滤高倍率节点: false, // 是否过滤高倍率节点
-  过滤非地区节点: true, // 是否过滤非地区节点
+  过滤非地区节点: true, // 是否过滤非地区节点（家宽节点始终保留）
   屏蔽国外QUIC: true, // 是否屏蔽国外QUIC流量
   代理IPV4优先: false, // 是否将订阅节点统一为 IPv4 优先（与“代理IPV6优先”同时开启时不生效）
   代理IPV6优先: false, // 是否将订阅节点统一为 IPv6 优先（与“代理IPV4优先”同时开启时不生效）
@@ -154,7 +147,21 @@ const regionDefinitions = [
     regex: /🇸🇬|新加坡|狮城|(?<![A-Za-z])SGP?(?![A-Za-z])|singapore/i,
     icon: `${iconBaseUrl}Singapore.svg`,
   },
+  {
+    name: '台湾省',
+    flag: '🇹🇼',
+    regex: /🇹🇼|台湾|台北|高雄|(?<![A-Za-z])TWN?(?![A-Za-z])|taiwan/i,
+    icon: `${iconBaseUrl}Taiwan.svg`,
+  },
 ];
+
+// 家宽节点：各地区家宽全部聚合进同一组，不进入地区组
+const homeBroadbandName = '家宽';
+const homeBroadbandRegex =
+  /家宽|住宅(?:宽带|IP)?|家庭宽带|家用宽带|(?<![A-Za-z])home(?:\s*(?:ip|isp|broad(?:band)?))?(?![A-Za-z])|(?<![A-Za-z])residential(?![A-Za-z])/iu;
+function isHomeBroadband(proxyName) {
+  return homeBroadbandRegex.test(proxyName);
+}
 
 // 定义倍率策略组
 const lowRateRegionName = '低倍率节点';
@@ -302,14 +309,8 @@ const urlTestBaseOption = {
   hidden: true,
 };
 
-// 定义基础策略组
+// 定义基础策略组（精简版：无 APP 分流，仅保留全量测速）
 const baseGroups = [
-  {
-    name: '手动选择',
-    baseOption: selectBaseOption,
-    includeAll: true,
-    icon: `${iconBaseUrl}Static.svg`,
-  },
   {
     name: '自动选择',
     baseOption: urlTestBaseOption,
@@ -318,101 +319,7 @@ const baseGroups = [
   },
 ];
 
-// 定义分流策略组配置
-const serviceConfigs = [
-  ...baseGroups,
-  {
-    name: 'Google',
-    baseOption: selectBaseOption,
-    providers: {
-      google: {
-        ...ruleProviderCommonDomain,
-        url: `${ruleSetBaseUrl}geosite/google.mrs`,
-        path: './ruleset/google.mrs',
-        'path-in-bundle': 'geo/geosite/google.mrs',
-      },
-      google_ip: {
-        ...ruleProviderCommonIpcidr,
-        url: `${ruleSetBaseUrl}geoip/google.mrs`,
-        path: './ruleset/google_ip.mrs',
-        'path-in-bundle': 'geo/geoip/google.mrs',
-      },
-    },
-    icon: `${iconBaseUrl}Google.svg`,
-    rules: ['RULE-SET,google,Google', 'RULE-SET,google_ip,Google,no-resolve'],
-  },
-  {
-    name: 'AI',
-    baseOption: selectBaseOption,
-    defaultSelected: '美国',
-    providers: {
-      ai: {
-        ...ruleProviderCommonDomain,
-        url: `${ruleSetBaseUrl}geosite/category-ai-!cn.mrs`,
-        path: './ruleset/ai.mrs',
-        'path-in-bundle': 'geo/geosite/category-ai-!cn.mrs',
-      },
-    },
-    icon: `${iconBaseUrl}OpenAI.svg`,
-    rules: ['RULE-SET,ai,AI'],
-  },
-  {
-    name: 'Telegram',
-    baseOption: selectBaseOption,
-    providers: {
-      telegram: {
-        ...ruleProviderCommonDomain,
-        url: `${ruleSetBaseUrl}geosite/telegram.mrs`,
-        path: './ruleset/telegram.mrs',
-        'path-in-bundle': 'geo/geosite/telegram.mrs',
-      },
-      telegram_ip: {
-        ...ruleProviderCommonIpcidr,
-        url: `${ruleSetBaseUrl}geoip/telegram.mrs`,
-        path: './ruleset/telegram_ip.mrs',
-        'path-in-bundle': 'geo/geoip/telegram.mrs',
-      },
-    },
-    icon: `${iconBaseUrl}Telegram.svg`,
-    rules: ['RULE-SET,telegram,Telegram', 'RULE-SET,telegram_ip,Telegram,no-resolve'],
-  },
-  {
-    name: 'Steam',
-    baseOption: selectBaseOption,
-    direct: true,
-    providers: {
-      steam: {
-        ...ruleProviderCommonDomain,
-        url: `${ruleSetBaseUrl}geosite/steam.mrs`,
-        path: './ruleset/steam.mrs',
-        'path-in-bundle': 'geo/geosite/steam.mrs',
-      },
-      steam_ip: {
-        ...ruleProviderCommonIpcidr,
-        url: `${ruleSetBaseUrl}geoip/steam.mrs`,
-        path: './ruleset/steam_ip.mrs',
-        'path-in-bundle': 'geo/geoip/steam.mrs',
-      },
-    },
-    icon: `${iconBaseUrl}Steam.svg`,
-    rules: ['RULE-SET,steam,Steam', 'RULE-SET,steam_ip,Steam,no-resolve'],
-  },
-  {
-    name: 'AdBlock',
-    baseOption: selectBaseOption,
-    reject: true,
-    providers: {
-      adblockmihomolite: {
-        ...ruleProviderCommonDomain,
-        url: 'https://fastly.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblockmihomolite.mrs',
-        path: './ruleset/adblockmihomolite.mrs',
-        'path-in-bundle': 'geo/geosite/category-ads-all.mrs',
-      },
-    },
-    icon: `${iconBaseUrl}AdBlock.svg`,
-    rules: ['RULE-SET,adblockmihomolite,AdBlock'],
-  },
-];
+const serviceConfigs = [...baseGroups];
 
 // ---节点过滤、重命名及验证---
 
@@ -515,6 +422,8 @@ function filterAndNormalizeProxies(config) {
 
     if (!filterNonRegionProxiesEnabled) return true;
 
+    if (isHomeBroadband(proxy.name)) return true;
+
     const isRegionProxy = getMatchedRegions(proxy.name).some((region) => regionDefinitions.includes(region));
 
     return isRegionProxy || !excludeFilter.test(proxy.name);
@@ -598,8 +507,14 @@ function buildRegionGroups(filteredProxies, customProxies) {
 
   const regionGroups = Object.fromEntries(allRegionDefinitions.map(({ name }) => [name, []]));
   const otherProxies = [];
+  const homeProxies = [];
 
   for (const proxy of [...filteredProxies, ...customProxies]) {
+    if (isHomeBroadband(proxy.name)) {
+      homeProxies.push(proxy.name);
+      continue;
+    }
+
     const matchedRegions = getMatchedRegions(proxy.name);
     const isRegionProxy = matchedRegions.some((region) => regionDefinitions.includes(region));
 
@@ -615,6 +530,10 @@ function buildRegionGroups(filteredProxies, customProxies) {
   const generatedRegionGroups = allRegionDefinitions
     .filter((r) => regionGroups[r.name].length > 0 && (generateRateGroupEnabled || !rateRegionDefinitions.includes(r)))
     .flatMap((r) => createRegionGroup(r.name, r.icon, regionGroups[r.name]));
+
+  if (homeProxies.length > 0) {
+    generatedRegionGroups.push(...createRegionGroup(homeBroadbandName, `${iconBaseUrl}Static.svg`, homeProxies));
+  }
 
   if (otherProxies.length > 0) {
     generatedRegionGroups.push(...createRegionGroup('其他节点', `${iconBaseUrl}WorldMap.svg`, otherProxies));
@@ -683,7 +602,6 @@ function buildCustomizeGroups(filteredProxies, customizeList = customizeProxies)
 function buildFunctionalGroups(filteredProxies, generatedRegionGroups, customizeInfo) {
   const minimalModeEnabled = ruleOptionsEnable.极简模式;
   const blockForeignQuicEnabled = ruleOptionsEnable.屏蔽国外QUIC;
-  const addAllNodesToServiceGroupsEnabled = ruleOptionsEnable.分流组添加所有节点;
   const chainEnabled = ruleOptionsEnable.链式代理;
   const hideManualSelectGroupEnabled = ruleOptionsEnable.隐藏地区手动选择组;
 
@@ -765,41 +683,16 @@ function buildFunctionalGroups(filteredProxies, generatedRegionGroups, customize
   for (const svc of serviceConfigs) {
     if (!ruleOptionsEnable[svc.name]) continue;
 
-    let groupProxies = [];
-    if (svc.includeAll) {
-      groupProxies = [...allProxiesNames];
-    } else if (svc.reject) {
-      groupProxies = ['REJECT', 'REJECT-DROP', 'PASS'];
-    } else {
-      groupProxies = !addAllNodesToServiceGroupsEnabled
-        ? ['默认代理', ...customGroupNames, ...baseGroupNames, ...groupNamesOfSelect, ...(svc.direct ? ['直连'] : [])]
-        : [
-            '默认代理',
-            ...customGroupNames,
-            ...baseGroupNames,
-            ...groupNamesOfSelect,
-            ...allProxiesNames,
-            ...(svc.direct ? ['直连'] : []),
-          ];
-    }
-
     functionalGroups.push({
       ...svc.baseOption,
       name: svc.name,
       icon: svc.icon,
-      proxies: groupProxies,
+      proxies: svc.includeAll ? [...allProxiesNames] : ['默认代理', ...customGroupNames, ...groupNamesOfSelect],
       ...(svc.defaultSelected !== undefined && {
         'default-selected': svc.defaultSelected,
       }),
     });
   }
-
-  functionalGroups.push({
-    ...selectBaseOption,
-    name: '漏网之鱼',
-    proxies: ['默认代理', '直连', ...groupNamesOfSelect],
-    icon: `${iconBaseUrl}Stack.svg`,
-  });
 
   const directGroup = {
     ...selectBaseOption,
@@ -1295,7 +1188,7 @@ function main(config) {
     'RULE-SET,geolocation-!cn,默认代理',
     'RULE-SET,cn_ip,直连',
     'RULE-SET,private_ip,直连',
-    `MATCH,${ruleOptionsEnable.极简模式 ? '默认代理' : '漏网之鱼'}`,
+    'MATCH,默认代理',
   ];
 
   return newConfig;

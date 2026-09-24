@@ -1,5 +1,5 @@
 #  ---------说明---------
-#  mihomo配置（精简版）
+#  mihomo配置（精简版：无 APP 分流，地区/倍率/家宽聚合 + 测速）
 #  作者：AIsouler
 #  原仓库：https://github.com/AIsouler/MyClash
 #  配置链接：https://raw.githubusercontent.com/AIsouler/MyClash/main/Config/mihomoConfigLite.yaml
@@ -178,41 +178,6 @@ rule-providers:
 
   # --- 代理规则集 ---
 
-  google:
-    <<: *rule_providers_domain
-    url: 'https://fastly.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geosite/google.mrs'
-    path: './ruleset/google.mrs'
-    path-in-bundle: 'geo/geosite/google.mrs'
-  google_ip:
-    <<: *rule_providers_ip
-    url: 'https://fastly.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geoip/google.mrs'
-    path: './ruleset/google_ip.mrs'
-    path-in-bundle: 'geo/geoip/google.mrs'
-  ai:
-    <<: *rule_providers_domain
-    url: 'https://fastly.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geosite/category-ai-!cn.mrs'
-    path: './ruleset/ai.mrs'
-    path-in-bundle: 'geo/geosite/category-ai-!cn.mrs'
-  telegram:
-    <<: *rule_providers_domain
-    url: 'https://fastly.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geosite/telegram.mrs'
-    path: './ruleset/telegram.mrs'
-    path-in-bundle: 'geo/geosite/telegram.mrs'
-  telegram_ip:
-    <<: *rule_providers_ip
-    url: 'https://fastly.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geoip/telegram.mrs'
-    path: './ruleset/telegram_ip.mrs'
-    path-in-bundle: 'geo/geoip/telegram.mrs'
-  steam:
-    <<: *rule_providers_domain
-    url: 'https://fastly.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geosite/steam.mrs'
-    path: './ruleset/steam.mrs'
-    path-in-bundle: 'geo/geosite/steam.mrs'
-  steam_ip:
-    <<: *rule_providers_ip
-    url: 'https://fastly.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geoip/steam.mrs'
-    path: './ruleset/steam_ip.mrs'
-    path-in-bundle: 'geo/geoip/steam.mrs'
   geolocation-!cn:
     <<: *rule_providers_domain
     url: 'https://fastly.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geosite/geolocation-!cn.mrs'
@@ -221,11 +186,6 @@ rule-providers:
 
   # --- 其他规则集 ---
 
-  adblockmihomolite:
-    <<: *rule_providers_domain
-    url: 'https://fastly.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblockmihomolite.mrs'
-    path: './ruleset/adblockmihomolite.mrs'
-    path-in-bundle: 'geo/geosite/category-ads-all.mrs'
   fakeip_filter:
     <<: *rule_providers_domain
     url: 'https://fastly.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geosite/fakeip-filter.mrs'
@@ -273,47 +233,6 @@ group_common:
       hidden: true,
     }
 
-# 通用代理节点组
-proxies_common:
-  proxies_default:
-    &proxies_default {
-      proxies:
-        [
-          '默认代理',
-          '手动选择',
-          '自动选择',
-          '香港',
-          '日本',
-          '美国',
-          '新加坡',
-          '台湾省',
-          '低倍率节点',
-          '高倍率节点',
-          '其他节点',
-        ],
-    }
-
-  proxies_direct:
-    &proxies_direct {
-      proxies:
-        [
-          '默认代理',
-          '手动选择',
-          '自动选择',
-          '直连',
-          '香港',
-          '日本',
-          '美国',
-          '新加坡',
-          '台湾省',
-          '低倍率节点',
-          '高倍率节点',
-          '其他节点',
-        ],
-    }
-
-  proxies_reject: &proxies_reject { proxies: ['REJECT', 'REJECT-DROP', 'PASS'] }
-
 # 地区过滤器正则表达式定义
 group_filter:
   HK_filter: &HK_filter { filter: '(?i)(🇭🇰|香港|(?<![A-Za-z])HKG?(?![A-Za-z])|hong\s*kong)' }
@@ -332,116 +251,100 @@ group_filter:
     &high_filter {
       filter: '(?i)(?<=[ \[\(|｜丨∣┃\-‐–—−－﹣])((?:[*×✕✖⨯⨉x]\s*(?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?)|(?:(?<![\d.])(?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?\s*(?:倍|[*×✕✖⨯⨉x])))',
     }
+  home_filter:
+    &home_filter {
+      filter: '(?i)(家宽|住宅(?:宽带|IP)?|家庭宽带|家用宽带|(?<![A-Za-z])home(?:\s*(?:ip|isp|broad(?:band)?))?(?![A-Za-z])|(?<![A-Za-z])residential(?![A-Za-z]))',
+    }
+  home_exclude:
+    &home_exclude {
+      exclude-filter: '(?i)(家宽|住宅(?:宽带|IP)?|家庭宽带|家用宽带|(?<![A-Za-z])home(?:\s*(?:ip|isp|broad(?:band)?))?(?![A-Za-z])|(?<![A-Za-z])residential(?![A-Za-z]))',
+    }
   exclude_filter:
     &exclude_filter {
-      exclude-filter: '(?i)(🇭🇰|香港|(?<![A-Za-z])HKG?(?![A-Za-z])|hong\s*kong|🇯🇵|日本|东京|大阪|京都|(?<![A-Za-z])JPN?(?![A-Za-z])|japan|🇺🇸|美国|纽约|洛杉矶|旧金山|芝加哥|休斯顿|迈阿密|西雅图|波士顿|华盛顿|拉斯维加斯|圣何塞|圣地亚哥|(?<![A-Za-z])USA?(?![A-Za-z])|america|united\s*states|🇸🇬|新加坡|狮城|(?<![A-Za-z])SGP?(?![A-Za-z])|singapore|🇹🇼|台湾|台北|高雄|(?<![A-Za-z])TWN?(?![A-Za-z])|taiwan)',
+      exclude-filter: '(?i)(🇭🇰|香港|(?<![A-Za-z])HKG?(?![A-Za-z])|hong\s*kong|🇯🇵|日本|东京|大阪|京都|(?<![A-Za-z])JPN?(?![A-Za-z])|japan|🇺🇸|美国|纽约|洛杉矶|旧金山|芝加哥|休斯顿|迈阿密|西雅图|波士顿|华盛顿|拉斯维加斯|圣何塞|圣地亚哥|(?<![A-Za-z])USA?(?![A-Za-z])|america|united\s*states|🇸🇬|新加坡|狮城|(?<![A-Za-z])SGP?(?![A-Za-z])|singapore|🇹🇼|台湾|台北|高雄|(?<![A-Za-z])TWN?(?![A-Za-z])|taiwan|家宽|住宅|家庭宽带|家用宽带|(?<![A-Za-z])home(?![A-Za-z])|(?<![A-Za-z])residential(?![A-Za-z]))',
       exclude-type: 'direct',
     }
 
-# 定义分流策略组
+# 定义策略组：规则模式默认代理 = 地区聚合 + 高低倍率 + 家宽 + 测速
 proxy-groups:
   - name: '默认代理'
     <<: *group_common_select
     proxies:
-      ['香港', '日本', '美国', '新加坡', '台湾省', '低倍率节点', '高倍率节点', '手动选择', '自动选择', '其他节点']
+      ['香港', '日本', '美国', '新加坡', '台湾省', '低倍率节点', '高倍率节点', '家宽', '自动选择', '其他节点']
     icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Proxy.svg'
-
-  - name: '手动选择'
-    <<: *group_common_select
-    include-all: true
-    exclude-type: 'DIRECT'
-    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Static.svg'
 
   - name: '自动选择'
     <<: *group_common_auto
-
-  - name: 'Google'
-    <<: [*group_common_select, *proxies_default]
-    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Google.svg'
-
-  - name: 'AI'
-    <<: [*group_common_select, *proxies_default]
-    default-selected: '美国'
-    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/OpenAI.svg'
-
-  - name: 'Telegram'
-    <<: [*group_common_select, *proxies_default]
-    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Telegram.svg'
-
-  - name: 'Steam'
-    <<: [*group_common_select, *proxies_direct]
-    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Steam.svg'
-
-  - name: 'AdBlock'
-    <<: [*group_common_select, *proxies_reject]
-    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/AdBlock.svg'
-
-  - name: '漏网之鱼'
-    <<: *group_common_select
-    proxies: ['默认代理', '直连']
-    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Stack.svg'
 
   - name: '直连'
     <<: *group_common_select
     proxies: ['🇨🇳 直连 | 双栈', '🇨🇳 直连 | IPv4优先', '🇨🇳 直连 | IPv6优先', '🇨🇳 直连 | 仅IPv4', '🇨🇳 直连 | 仅IPv6']
     icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/China.svg'
 
-  # 定义地区策略组
+  # 地区策略组（排除家宽，家宽单独聚合）
   - name: '香港'
-    <<: [*group_common_select, *HK_filter]
+    <<: [*group_common_select, *HK_filter, *home_exclude]
     include-all: true
     proxies: ['香港-自动选择']
     icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/HongKong.svg'
   - name: '香港-自动选择'
-    <<: [*group_common_auto, *HK_filter]
+    <<: [*group_common_auto, *HK_filter, *home_exclude]
 
   - name: '日本'
-    <<: [*group_common_select, *JP_filter]
+    <<: [*group_common_select, *JP_filter, *home_exclude]
     include-all: true
     proxies: ['日本-自动选择']
     icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Japan.svg'
   - name: '日本-自动选择'
-    <<: [*group_common_auto, *JP_filter]
+    <<: [*group_common_auto, *JP_filter, *home_exclude]
 
   - name: '美国'
-    <<: [*group_common_select, *US_filter]
+    <<: [*group_common_select, *US_filter, *home_exclude]
     include-all: true
     proxies: ['美国-自动选择']
     icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/America.svg'
   - name: '美国-自动选择'
-    <<: [*group_common_auto, *US_filter]
+    <<: [*group_common_auto, *US_filter, *home_exclude]
 
   - name: '新加坡'
-    <<: [*group_common_select, *SG_filter]
+    <<: [*group_common_select, *SG_filter, *home_exclude]
     include-all: true
     proxies: ['新加坡-自动选择']
     icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Singapore.svg'
   - name: '新加坡-自动选择'
-    <<: [*group_common_auto, *SG_filter]
+    <<: [*group_common_auto, *SG_filter, *home_exclude]
 
   - name: '台湾省'
-    <<: [*group_common_select, *TW_filter]
+    <<: [*group_common_select, *TW_filter, *home_exclude]
     include-all: true
     proxies: ['台湾省-自动选择']
     icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Taiwan.svg'
   - name: '台湾省-自动选择'
-    <<: [*group_common_auto, *TW_filter]
+    <<: [*group_common_auto, *TW_filter, *home_exclude]
 
   - name: '低倍率节点'
-    <<: [*group_common_select, *low_filter]
+    <<: [*group_common_select, *low_filter, *home_exclude]
     include-all: true
     proxies: ['低倍率节点-自动选择']
     icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Available.svg'
   - name: '低倍率节点-自动选择'
-    <<: [*group_common_auto, *low_filter]
+    <<: [*group_common_auto, *low_filter, *home_exclude]
 
   - name: '高倍率节点'
-    <<: [*group_common_select, *high_filter]
+    <<: [*group_common_select, *high_filter, *home_exclude]
     include-all: true
     proxies: ['高倍率节点-自动选择']
     icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Airport.svg'
   - name: '高倍率节点-自动选择'
-    <<: [*group_common_auto, *high_filter]
+    <<: [*group_common_auto, *high_filter, *home_exclude]
+
+  - name: '家宽'
+    <<: [*group_common_select, *home_filter]
+    include-all: true
+    proxies: ['家宽-自动选择']
+    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Static.svg'
+  - name: '家宽-自动选择'
+    <<: [*group_common_auto, *home_filter]
 
   - name: '其他节点'
     <<: [*group_common_select, *exclude_filter]
@@ -469,20 +372,8 @@ rules:
   # 禁用国外 QUIC 流量
   - AND,((NETWORK,UDP),(DST-PORT,443),(NOT,((OR,((RULE-SET,cn_additional),(RULE-SET,cn_ip,no-resolve)))))),REJECT
 
-  # 广告拦截
-  - RULE-SET,adblockmihomolite,AdBlock
-
-  # 代理规则
-  - RULE-SET,google,Google
-  - RULE-SET,google_ip,Google,no-resolve
-  - RULE-SET,ai,AI
-  - RULE-SET,telegram,Telegram
-  - RULE-SET,telegram_ip,Telegram,no-resolve
-  - RULE-SET,steam,Steam
-  - RULE-SET,steam_ip,Steam,no-resolve
-
   # 兜底规则
   - RULE-SET,geolocation-!cn,默认代理
   - RULE-SET,cn_ip,直连
   - RULE-SET,private_ip,直连
-  - MATCH,漏网之鱼
+  - MATCH,默认代理
