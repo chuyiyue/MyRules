@@ -282,7 +282,7 @@ proxy-groups:
   - name: '默认代理'
     <<: *group_common_select
     proxies:
-      ['🏠 家宽', '香港', '日本', '新加坡', '台湾', '美国', '亚太', '欧洲', '美洲', '低倍率节点', '高倍率节点', '自动选择', '其他地区']
+      ['🏠 家宽', '香港', '日本', '新加坡', '台湾', '美国', '亚太', '🇪🇺 欧洲', '美洲', '低倍率节点', '高倍率节点', '自动选择', '其他地区']
     icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/Proxy.svg'
 
   - name: '自动选择'
@@ -330,10 +330,10 @@ proxy-groups:
     hidden: false
     icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/Global.svg'
 
-  - name: '欧洲'
+  - name: '🇪🇺 欧洲'
     <<: [*group_common_auto, *EU_filter, *home_exclude]
     hidden: false
-    icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/Britain.svg'
+    icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/Europe.svg'
 
   - name: '美洲'
     <<: [*group_common_auto, *AM_filter, *home_exclude]

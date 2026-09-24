@@ -608,10 +608,13 @@ function buildRegionGroups(filteredProxies, customProxies) {
     台湾: `${iconBaseUrl}Taiwan.svg`,
     美国: `${iconBaseUrl}America.svg`,
     亚太: `${iconBaseUrl}Global.svg`,
-    欧洲: `${iconBaseUrl}Britain.svg`,
+    欧洲: `${iconBaseUrl}Europe.svg`,
     美洲: `${iconBaseUrl}Canada.svg`,
     [lowRateRegionName]: `${iconBaseUrl}Available.svg`,
     [highRateRegionName]: `${iconBaseUrl}Airport.svg`,
+  };
+  const displayNames = {
+    欧洲: '🇪🇺 欧洲',
   };
   const displayOrder = ['香港', '日本', '新加坡', '台湾', '美国', '亚太', '欧洲', '美洲'];
 
@@ -650,7 +653,7 @@ function buildRegionGroups(filteredProxies, customProxies) {
 
   for (const name of displayOrder) {
     if (buckets[name].length > 0) {
-      generatedRegionGroups.push(...createRegionGroup(name, displayIcons[name], buckets[name]));
+      generatedRegionGroups.push(...createRegionGroup(displayNames[name] || name, displayIcons[name], buckets[name]));
     }
   }
 

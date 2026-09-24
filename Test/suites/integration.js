@@ -126,12 +126,12 @@ function runIntegrationTests(h, api, meta, fx, loadScript, scriptFile) {
       const out = api.main(cfg);
       const def = groupByName(out['proxy-groups'], '默认代理');
       h.assert(groupByName(out['proxy-groups'], '亚太'), '韩国应并入亚太');
-      h.assert(groupByName(out['proxy-groups'], '欧洲'), '英德应并入欧洲');
+      h.assert(groupByName(out['proxy-groups'], '🇪🇺 欧洲'), '英德应并入欧洲');
       h.assert(!groupByName(out['proxy-groups'], '韩国'), '不应再单独生成韩国组');
       h.assert(!groupByName(out['proxy-groups'], '英国'), '不应再单独生成英国组');
       h.assert(!groupByName(out['proxy-groups'], '德国'), '不应再单独生成德国组');
       h.assert(def.proxies.includes('亚太'), '默认代理应含亚太');
-      h.assert(def.proxies.includes('欧洲'), '默认代理应含欧洲');
+      h.assert(def.proxies.includes('🇪🇺 欧洲'), '默认代理应含欧洲');
       h.assertEqual(groupByName(out['proxy-groups'], '直连').hidden, true, '直连组应隐藏');
     });
   }
