@@ -243,7 +243,7 @@ group_filter:
     }
   SG_filter: &SG_filter { filter: '(?i)(🇸🇬|新加坡|狮城|(?<![A-Za-z])SGP?(?![A-Za-z])|singapore)' }
   TW_filter: &TW_filter { filter: '(?i)(🇹🇼|台湾|台北|高雄|(?<![A-Za-z])TWN?(?![A-Za-z])|taiwan)' }
-    APAC_filter:
+  APAC_filter:
     &APAC_filter {
       filter: '(?i)(🇰🇷|韩国|首尔|(?<![A-Za-z])KOR?(?![A-Za-z])|korea|🇦🇺|澳大利亚|澳洲|悉尼|(?<![A-Za-z])AUS?(?![A-Za-z])|australia|🇮🇳|印度(?!尼西亚)|(?<![A-Za-z])india(?![A-Za-z])|🇲🇾|马来西亚|马来|🇹🇭|泰国|🇵🇭|菲律宾|🇻🇳|越南|🇮🇩|印尼|印度尼西亚|🇲🇴|澳门|macao|macau)',
     }
