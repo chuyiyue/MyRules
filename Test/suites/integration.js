@@ -89,6 +89,7 @@ function runIntegrationTests(h, api, meta, fx, loadScript, scriptFile) {
         h.assert(!groupByName(out['proxy-groups'], name), `不应存在 ${name}`);
       }
       h.assert(out.rules.includes('MATCH,默认代理'), 'MATCH 应指向默认代理');
+      h.assert(!out['proxy-groups'].some((g) => g.name.endsWith('-自动选择')), '地区组不应再拆 *-自动选择');
       h.assert(!out.rules.some((rule) => /,(Google|AI|Telegram|Steam|AdBlock)$/.test(rule)), '不应生成 APP 分流规则');
       const def = groupByName(out['proxy-groups'], '默认代理');
       for (const name of ['香港', '日本', '美国', '新加坡', '台湾', '低倍率节点', '高倍率节点', '自动选择']) {
@@ -105,11 +106,11 @@ function runIntegrationTests(h, api, meta, fx, loadScript, scriptFile) {
       const out = api.main(cfg);
       const home = groupByName(out['proxy-groups'], '家宽');
       h.assert(home, '应生成家宽组');
-      h.assert(home.type === 'select', '家宽组应为 select');
+      h.assertEqual(home.type, 'url-test', '家宽组应为测速组');
       h.assert(home.proxies.includes('🇭🇰 香港家宽 01'));
       h.assert(home.proxies.includes('🇯🇵 日本住宅 02'));
       h.assert(home.proxies.includes('🇺🇸 US Home 03'));
-      h.assert(home.proxies.includes('家宽-自动选择'), '家宽应带测速子组');
+      h.assert(!groupByName(out['proxy-groups'], '家宽-自动选择'), '不应再拆家宽-自动选择');
       h.assert(!groupByName(out['proxy-groups'], '香港').proxies.includes('🇭🇰 香港家宽 01'), '家宽不应进入香港组');
       h.assert(!groupByName(out['proxy-groups'], '日本').proxies.includes('🇯🇵 日本住宅 02'), '家宽不应进入日本组');
       h.assert(groupByName(out['proxy-groups'], '默认代理').proxies.includes('家宽'), '默认代理应含家宽');

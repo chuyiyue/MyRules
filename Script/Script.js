@@ -465,32 +465,16 @@ function filterAndNormalizeProxies(config) {
 // ---构建地区组和倍率组---
 
 /**
- * 构建地区策略组，可附带自动选择组
+ * 每个地区/家宽只生成一组：默认 url-test 测速，避免「新加坡」和「新加坡-自动选择」并列。
  */
 function createRegionGroup(name, icon, proxies) {
   const generateRegionAutoSelectEnabled = ruleOptionsEnable.生成地区自动选择组;
   const hideManualSelectGroupEnabled = ruleOptionsEnable.隐藏地区手动选择组;
+  const base = generateRegionAutoSelectEnabled ? urlTestBaseOption : selectBaseOption;
 
-  if (generateRegionAutoSelectEnabled) {
-    const urlTestName = `${name}-自动选择`;
-    return [
-      {
-        ...urlTestBaseOption,
-        name: urlTestName,
-        proxies,
-      },
-      {
-        ...selectBaseOption,
-        name,
-        icon,
-        proxies: [...proxies, urlTestName],
-        hidden: hideManualSelectGroupEnabled,
-      },
-    ];
-  }
   return [
     {
-      ...selectBaseOption,
+      ...base,
       name,
       icon,
       proxies,
@@ -616,7 +600,7 @@ function buildFunctionalGroups(filteredProxies, generatedRegionGroups, customize
   const { customProxyNames = [], customGroup = null } = customizeInfo || {};
   const filteredProxyNames = filteredProxies.map((p) => p.name);
   const allProxiesNames = [...customProxyNames, ...filteredProxyNames];
-  const groupNamesOfSelect = generatedRegionGroups.filter((g) => g.type === 'select').map((g) => g.name);
+  const regionGroupNames = generatedRegionGroups.map((g) => g.name);
   const baseGroupNames = baseGroups.filter((g) => ruleOptionsEnable[g.name]).map((g) => g.name);
   const customGroupNames = customGroup ? [customGroup.name] : [];
 
@@ -665,7 +649,7 @@ function buildFunctionalGroups(filteredProxies, generatedRegionGroups, customize
   functionalGroups.push({
     ...selectBaseOption,
     name: '默认代理',
-    proxies: [...groupNamesOfSelect, ...baseGroupNames, ...customGroupNames],
+    proxies: [...regionGroupNames, ...baseGroupNames, ...customGroupNames],
     icon: `${iconBaseUrl}Proxy.svg`,
   });
 
@@ -687,7 +671,7 @@ function buildFunctionalGroups(filteredProxies, generatedRegionGroups, customize
       ...svc.baseOption,
       name: svc.name,
       icon: svc.icon,
-      proxies: svc.includeAll ? [...allProxiesNames] : ['默认代理', ...customGroupNames, ...groupNamesOfSelect],
+      proxies: svc.includeAll ? [...allProxiesNames] : ['默认代理', ...customGroupNames, ...regionGroupNames],
       ...(svc.defaultSelected !== undefined && {
         'default-selected': svc.defaultSelected,
       }),

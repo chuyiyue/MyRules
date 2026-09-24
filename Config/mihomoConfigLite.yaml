@@ -283,76 +283,49 @@ proxy-groups:
 
   # 地区策略组（排除家宽，家宽单独聚合）
   - name: '香港'
-    <<: [*group_common_select, *HK_filter, *home_exclude]
-    include-all: true
-    proxies: ['香港-自动选择']
-    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/HongKong.svg'
-  - name: '香港-自动选择'
     <<: [*group_common_auto, *HK_filter, *home_exclude]
+    hidden: false
+    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/HongKong.svg'
 
   - name: '日本'
-    <<: [*group_common_select, *JP_filter, *home_exclude]
-    include-all: true
-    proxies: ['日本-自动选择']
-    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Japan.svg'
-  - name: '日本-自动选择'
     <<: [*group_common_auto, *JP_filter, *home_exclude]
+    hidden: false
+    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Japan.svg'
 
   - name: '美国'
-    <<: [*group_common_select, *US_filter, *home_exclude]
-    include-all: true
-    proxies: ['美国-自动选择']
-    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/America.svg'
-  - name: '美国-自动选择'
     <<: [*group_common_auto, *US_filter, *home_exclude]
+    hidden: false
+    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/America.svg'
 
   - name: '新加坡'
-    <<: [*group_common_select, *SG_filter, *home_exclude]
-    include-all: true
-    proxies: ['新加坡-自动选择']
-    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Singapore.svg'
-  - name: '新加坡-自动选择'
     <<: [*group_common_auto, *SG_filter, *home_exclude]
+    hidden: false
+    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Singapore.svg'
 
   - name: '台湾'
-    <<: [*group_common_select, *TW_filter, *home_exclude]
-    include-all: true
-    proxies: ['台湾-自动选择']
-    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Taiwan.svg'
-  - name: '台湾-自动选择'
     <<: [*group_common_auto, *TW_filter, *home_exclude]
+    hidden: false
+    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Taiwan.svg'
 
   - name: '低倍率节点'
-    <<: [*group_common_select, *low_filter, *home_exclude]
-    include-all: true
-    proxies: ['低倍率节点-自动选择']
-    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Available.svg'
-  - name: '低倍率节点-自动选择'
     <<: [*group_common_auto, *low_filter, *home_exclude]
+    hidden: false
+    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Available.svg'
 
   - name: '高倍率节点'
-    <<: [*group_common_select, *high_filter, *home_exclude]
-    include-all: true
-    proxies: ['高倍率节点-自动选择']
-    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Airport.svg'
-  - name: '高倍率节点-自动选择'
     <<: [*group_common_auto, *high_filter, *home_exclude]
+    hidden: false
+    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Airport.svg'
 
   - name: '家宽'
-    <<: [*group_common_select, *home_filter]
-    include-all: true
-    proxies: ['家宽-自动选择']
-    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Static.svg'
-  - name: '家宽-自动选择'
     <<: [*group_common_auto, *home_filter]
+    hidden: false
+    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Static.svg'
 
   - name: '其他节点'
-    <<: [*group_common_select, *exclude_filter]
-    include-all: true
-    proxies: ['其他节点-自动选择']
-    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/WorldMap.svg'
-  - name: '其他节点-自动选择'
     <<: [*group_common_auto, *exclude_filter]
+    hidden: false
+    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/WorldMap.svg'
 
 # --- 路由规则 (Rules) ---
 
