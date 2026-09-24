@@ -2,7 +2,7 @@
 #  mihomo配置（精简版：无 APP 分流，地区/倍率/家宽聚合 + 测速）
 #  作者：AIsouler
 #  原仓库：https://github.com/AIsouler/MyClash
-#  配置链接：https://raw.githubusercontent.com/AIsouler/MyClash/main/Config/mihomoConfigLite.yaml
+#  配置链接：https://raw.githubusercontent.com/chuyiyue/MyRules/main/Config/mihomoConfigLite.yaml
 #  友情推荐，非常好用、省电且内存占用低的代理软件：https://github.com/appshubcc/Bettbox
 #  ---------------------
 
@@ -229,7 +229,7 @@ group_common:
       tolerance: 50,
       include-all: true,
       exclude-type: 'DIRECT',
-      icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Auto.svg',
+      icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/Auto.svg',
       hidden: true,
     }
 
@@ -271,7 +271,7 @@ proxy-groups:
     <<: *group_common_select
     proxies:
       ['香港', '日本', '美国', '新加坡', '台湾', '低倍率节点', '高倍率节点', '家宽', '自动选择', '其他节点']
-    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Proxy.svg'
+    icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/Proxy.svg'
 
   - name: '自动选择'
     <<: *group_common_auto
@@ -280,53 +280,53 @@ proxy-groups:
     <<: *group_common_select
     proxies: ['🇨🇳 直连 | 双栈', '🇨🇳 直连 | IPv4优先', '🇨🇳 直连 | IPv6优先', '🇨🇳 直连 | 仅IPv4', '🇨🇳 直连 | 仅IPv6']
     hidden: true
-    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/China.svg'
+    icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/China.svg'
 
   # 地区策略组（排除家宽，家宽单独聚合）
   - name: '香港'
     <<: [*group_common_auto, *HK_filter, *home_exclude]
     hidden: false
-    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/HongKong.svg'
+    icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/HongKong.svg'
 
   - name: '日本'
     <<: [*group_common_auto, *JP_filter, *home_exclude]
     hidden: false
-    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Japan.svg'
+    icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/Japan.svg'
 
   - name: '美国'
     <<: [*group_common_auto, *US_filter, *home_exclude]
     hidden: false
-    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/America.svg'
+    icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/America.svg'
 
   - name: '新加坡'
     <<: [*group_common_auto, *SG_filter, *home_exclude]
     hidden: false
-    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Singapore.svg'
+    icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/Singapore.svg'
 
   - name: '台湾'
     <<: [*group_common_auto, *TW_filter, *home_exclude]
     hidden: false
-    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Taiwan.svg'
+    icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/Taiwan.svg'
 
   - name: '低倍率节点'
     <<: [*group_common_auto, *low_filter, *home_exclude]
     hidden: false
-    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Available.svg'
+    icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/Available.svg'
 
   - name: '高倍率节点'
     <<: [*group_common_auto, *high_filter, *home_exclude]
     hidden: false
-    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Airport.svg'
+    icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/Airport.svg'
 
   - name: '家宽'
     <<: [*group_common_auto, *home_filter]
     hidden: false
-    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Static.svg'
+    icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/Static.svg'
 
   - name: '其他节点'
     <<: [*group_common_auto, *exclude_filter]
     hidden: false
-    icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/WorldMap.svg'
+    icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/WorldMap.svg'
 
 # --- 路由规则 (Rules) ---
 

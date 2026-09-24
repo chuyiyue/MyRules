@@ -1,6 +1,8 @@
-# MyClash
+# MyRules
 
-基于 [Mihomo](https://github.com/MetaCubeX/mihomo/tree/Alpha) 的**覆写脚本与配置文件**，仅适用于 mihomo 内核的代理客户端
+基于 [Mihomo](https://github.com/MetaCubeX/mihomo/tree/Alpha) 的**覆写脚本与配置文件**，仅适用于 mihomo 内核的代理客户端。
+
+本仓库 fork 自 [AIsouler/MyClash](https://github.com/AIsouler/MyClash)，更名为 MyRules。
 
 > [!IMPORTANT]
 >
@@ -61,7 +63,7 @@
 [mihomoScript.js](/Script/mihomoScript.js)，复制下面这个链接使用👇👇👇
 
 ```text
-https://raw.githubusercontent.com/AIsouler/MyClash/main/Script/mihomoScript.js
+https://raw.githubusercontent.com/chuyiyue/MyRules/main/Script/mihomoScript.js
 ```
 
 - **精简版**
@@ -69,12 +71,12 @@ https://raw.githubusercontent.com/AIsouler/MyClash/main/Script/mihomoScript.js
 [Script.js](/Script/Script.js)，复制下面这个链接使用👇👇👇
 
 ```text
-https://raw.githubusercontent.com/AIsouler/MyClash/main/Script/Script.js
+https://raw.githubusercontent.com/chuyiyue/MyRules/main/Script/Script.js
 ```
 
 |                                                                                   |
 | --------------------------------------------------------------------------------- |
-| ![img](https://raw.githubusercontent.com/AIsouler/MyClash/main/Image/import.webp) |
+| ![img](https://raw.githubusercontent.com/chuyiyue/MyRules/main/Image/import.webp) |
 
 ---
 
@@ -97,7 +99,7 @@ https://raw.githubusercontent.com/AIsouler/MyClash/main/Script/Script.js
 [mihomoConfig.yaml](/Config/mihomoConfig.yaml)，复制下面这个链接使用👇👇👇
 
 ```text
-https://raw.githubusercontent.com/AIsouler/MyClash/main/Config/mihomoConfig.yaml
+https://raw.githubusercontent.com/chuyiyue/MyRules/main/Config/mihomoConfig.yaml
 ```
 
 - **精简版**
@@ -105,7 +107,7 @@ https://raw.githubusercontent.com/AIsouler/MyClash/main/Config/mihomoConfig.yaml
 [mihomoConfigLite.yaml](/Config/mihomoConfigLite.yaml)，复制下面这个链接使用👇👇👇
 
 ```text
-https://raw.githubusercontent.com/AIsouler/MyClash/main/Config/mihomoConfigLite.yaml
+https://raw.githubusercontent.com/chuyiyue/MyRules/main/Config/mihomoConfigLite.yaml
 ```
 
 ---
@@ -116,12 +118,12 @@ https://raw.githubusercontent.com/AIsouler/MyClash/main/Config/mihomoConfigLite.
 
 |                                                                                  |                                                                                  |                                                                                  |                                                                                  |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| ![img](https://raw.githubusercontent.com/AIsouler/MyClash/main/Image/IMG_1.webp) | ![img](https://raw.githubusercontent.com/AIsouler/MyClash/main/Image/IMG_2.webp) | ![img](https://raw.githubusercontent.com/AIsouler/MyClash/main/Image/IMG_3.webp) | ![img](https://raw.githubusercontent.com/AIsouler/MyClash/main/Image/IMG_4.webp) |
-| ![img](https://raw.githubusercontent.com/AIsouler/MyClash/main/Image/IMG_5.webp) | ![img](https://raw.githubusercontent.com/AIsouler/MyClash/main/Image/IMG_6.webp) | ![img](https://raw.githubusercontent.com/AIsouler/MyClash/main/Image/IMG_7.webp) | ![img](https://raw.githubusercontent.com/AIsouler/MyClash/main/Image/IMG_8.webp) |
+| ![img](https://raw.githubusercontent.com/chuyiyue/MyRules/main/Image/IMG_1.webp) | ![img](https://raw.githubusercontent.com/chuyiyue/MyRules/main/Image/IMG_2.webp) | ![img](https://raw.githubusercontent.com/chuyiyue/MyRules/main/Image/IMG_3.webp) | ![img](https://raw.githubusercontent.com/chuyiyue/MyRules/main/Image/IMG_4.webp) |
+| ![img](https://raw.githubusercontent.com/chuyiyue/MyRules/main/Image/IMG_5.webp) | ![img](https://raw.githubusercontent.com/chuyiyue/MyRules/main/Image/IMG_6.webp) | ![img](https://raw.githubusercontent.com/chuyiyue/MyRules/main/Image/IMG_7.webp) | ![img](https://raw.githubusercontent.com/chuyiyue/MyRules/main/Image/IMG_8.webp) |
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/chart?repos=aisouler/myclash&type=date&legend=top-left)](https://www.star-history.com/?repos=aisouler%2Fmyclash&type=date&legend=top-left)
+[![Star History Chart](https://api.star-history.com/chart?repos=chuyiyue/myrules&type=date&legend=top-left)](https://www.star-history.com/?repos=chuyiyue%2Fmyrules&type=date&legend=top-left)
 
 ## 致谢
 
