@@ -659,7 +659,7 @@ function buildRegionGroups(filteredProxies, customProxies) {
   }
 
   if (homeProxies.length > 0) {
-    generatedRegionGroups.push(...createRegionGroup(homeBroadbandName, `${iconBaseUrl}Static.svg`, homeProxies));
+    generatedRegionGroups.push(...createRegionGroup(homeBroadbandName, `${iconBaseUrl}House.svg`, homeProxies));
   }
 
   if (otherProxies.length > 0) {

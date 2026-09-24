@@ -347,7 +347,7 @@ proxy-groups:
   - name: '家宽'
     <<: [*group_common_auto, *home_filter]
     hidden: false
-    icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/Static.svg'
+    icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/House.svg'
 
   - name: '其他地区'
     <<: [*group_common_auto, *exclude_filter]
