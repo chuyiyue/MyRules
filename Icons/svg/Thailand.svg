@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <clipPath id="card_thailand">
+      <rect x="72" y="168" width="880" height="688" rx="168" />
+    </clipPath>
+    <linearGradient id="g0" gradientUnits="userSpaceOnUse" x1="72.00" y1="282.67" x2="72.00" y2="168.00">
+      <stop offset="0" stop-color="#871428" />
+      <stop offset="1" stop-color="#B0354A" />
+    </linearGradient>
+    <linearGradient id="g1" gradientUnits="userSpaceOnUse" x1="72.00" y1="397.33" x2="72.00" y2="282.67">
+      <stop offset="0" stop-color="#C8C9CB" />
+      <stop offset="1" stop-color="#F5F6F9" />
+    </linearGradient>
+    <linearGradient id="g2" gradientUnits="userSpaceOnUse" x1="72.00" y1="626.67" x2="72.00" y2="397.33">
+      <stop offset="0" stop-color="#25223D" />
+      <stop offset="1" stop-color="#464460" />
+    </linearGradient>
+    <linearGradient id="g3" gradientUnits="userSpaceOnUse" x1="72.00" y1="741.33" x2="72.00" y2="626.67">
+      <stop offset="0" stop-color="#C8C9CB" />
+      <stop offset="1" stop-color="#F5F6F9" />
+    </linearGradient>
+    <linearGradient id="g4" gradientUnits="userSpaceOnUse" x1="72.00" y1="856.00" x2="72.00" y2="741.33">
+      <stop offset="0" stop-color="#871428" />
+      <stop offset="1" stop-color="#B0354A" />
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#card_thailand)">
+    <rect fill="url(#g0)" x="72.00" y="168.00" width="880.00" height="114.67" />
+    <rect fill="url(#g1)" x="72.00" y="282.67" width="880.00" height="114.67" />
+    <rect fill="url(#g2)" x="72.00" y="397.33" width="880.00" height="229.33" />
+    <rect fill="url(#g3)" x="72.00" y="626.67" width="880.00" height="114.67" />
+    <rect fill="url(#g4)" x="72.00" y="741.33" width="880.00" height="114.67" />
+  </g>
+</svg>

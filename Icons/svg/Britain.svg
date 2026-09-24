@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <clipPath id="card_britain">
+      <rect x="72" y="168" width="880" height="688" rx="168" />
+    </clipPath>
+    <linearGradient id="blue" gradientUnits="userSpaceOnUse" x1="72.00" y1="856.00" x2="72.00" y2="168.00">
+      <stop offset="0" stop-color="#011B56" />
+      <stop offset="1" stop-color="#1F3C7B" />
+    </linearGradient>
+    <linearGradient id="white" gradientUnits="userSpaceOnUse" x1="72.00" y1="856.00" x2="72.00" y2="168.00">
+      <stop offset="0" stop-color="#D1D1D1" />
+      <stop offset="1" stop-color="#FFFFFF" />
+    </linearGradient>
+    <linearGradient id="red" gradientUnits="userSpaceOnUse" x1="72.00" y1="856.00" x2="72.00" y2="168.00">
+      <stop offset="0" stop-color="#A40D26" />
+      <stop offset="1" stop-color="#CF2D47" />
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#card_britain)">
+    <rect fill="url(#blue)" x="72.00" y="168.00" width="880.00" height="688.00" />
+    <path fill="url(#white)" d="M72,213.0 L117.0,168 L952,811.0 L907.0,856 Z M907.0,168 L952,213.0 L117.0,856 L72,811.0 Z" />
+    <path fill="url(#red)" d="M72,186.0 L90.0,168 L952,838.0 L934.0,856 Z M934.0,168 L952,186.0 L90.0,856 L72,838.0 Z" />
+    <rect fill="url(#white)" x="442.00" y="168.00" width="140.00" height="688.00" />
+    <rect fill="url(#white)" x="72.00" y="442.00" width="880.00" height="140.00" />
+    <rect fill="url(#red)" x="470.00" y="168.00" width="84.00" height="688.00" />
+    <rect fill="url(#red)" x="72.00" y="470.00" width="880.00" height="84.00" />
+  </g>
+</svg>

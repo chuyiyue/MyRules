@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <clipPath id="card_philippines">
+      <rect x="72" y="168" width="880" height="688" rx="168" />
+    </clipPath>
+    <linearGradient id="blue" gradientUnits="userSpaceOnUse" x1="72.00" y1="512.00" x2="72.00" y2="168.00">
+      <stop offset="0" stop-color="#002E8A" />
+      <stop offset="1" stop-color="#1F50B2" />
+    </linearGradient>
+    <linearGradient id="red" gradientUnits="userSpaceOnUse" x1="72.00" y1="856.00" x2="72.00" y2="512.00">
+      <stop offset="0" stop-color="#A90E1F" />
+      <stop offset="1" stop-color="#D42E40" />
+    </linearGradient>
+    <linearGradient id="white" gradientUnits="userSpaceOnUse" x1="72.00" y1="856.00" x2="72.00" y2="168.00">
+      <stop offset="0" stop-color="#D1D1D1" />
+      <stop offset="1" stop-color="#FFFFFF" />
+    </linearGradient>
+    <linearGradient id="gold" gradientUnits="userSpaceOnUse" x1="72.00" y1="856.00" x2="72.00" y2="168.00">
+      <stop offset="0" stop-color="#CFAB12" />
+      <stop offset="1" stop-color="#FCD732" />
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#card_philippines)">
+    <rect fill="url(#blue)" x="72.00" y="168.00" width="880.00" height="344.00" />
+    <rect fill="url(#red)" x="72.00" y="512.00" width="880.00" height="344.00" />
+    <polygon fill="url(#white)" points="72,168 412.00,512.00 72,856" />
+    <polygon fill="url(#gold)" points="190.00,470.00 199.40,499.06 229.94,499.02 205.22,516.94 214.69,545.98 190.00,528.00 165.31,545.98 174.78,516.94 150.06,499.02 180.60,499.06" />
+    <polygon fill="url(#gold)" points="142.00,376.00 147.29,390.72 162.92,391.20 150.56,400.78 154.93,415.80 142.00,407.00 129.07,415.80 133.44,400.78 121.08,391.20 136.71,390.72" />
+    <polygon fill="url(#gold)" points="142.00,772.00 147.29,786.72 162.92,787.20 150.56,796.78 154.93,811.80 142.00,803.00 129.07,811.80 133.44,796.78 121.08,787.20 136.71,786.72" />
+    <polygon fill="url(#gold)" points="142.00,224.00 147.29,238.72 162.92,239.20 150.56,248.78 154.93,263.80 142.00,255.00 129.07,263.80 133.44,248.78 121.08,239.20 136.71,238.72" />
+    <polygon fill="url(#gold)" points="142.00,756.00 147.29,770.72 162.92,771.20 150.56,780.78 154.93,795.80 142.00,787.00 129.07,795.80 133.44,780.78 121.08,771.20 136.71,770.72" />
+  </g>
+</svg>

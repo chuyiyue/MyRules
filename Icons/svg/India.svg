@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <clipPath id="card_india">
+      <rect x="72" y="168" width="880" height="688" rx="168" />
+    </clipPath>
+    <linearGradient id="g0" gradientUnits="userSpaceOnUse" x1="72.00" y1="397.33" x2="72.00" y2="168.00">
+      <stop offset="0" stop-color="#D17D2A" />
+      <stop offset="1" stop-color="#FFA54B" />
+    </linearGradient>
+    <linearGradient id="g1" gradientUnits="userSpaceOnUse" x1="72.00" y1="626.67" x2="72.00" y2="397.33">
+      <stop offset="0" stop-color="#D1D1D1" />
+      <stop offset="1" stop-color="#FFFFFF" />
+    </linearGradient>
+    <linearGradient id="g2" gradientUnits="userSpaceOnUse" x1="72.00" y1="856.00" x2="72.00" y2="626.67">
+      <stop offset="0" stop-color="#107007" />
+      <stop offset="1" stop-color="#2F9626" />
+    </linearGradient>
+    <linearGradient id="chakra" gradientUnits="userSpaceOnUse" x1="512.00" y1="590.00" x2="512.00" y2="434.00">
+      <stop offset="0" stop-color="#000069" />
+      <stop offset="1" stop-color="#1F1F8F" />
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#card_india)">
+    <rect fill="url(#g0)" x="72.00" y="168.00" width="880.00" height="229.33" />
+    <rect fill="url(#g1)" x="72.00" y="397.33" width="880.00" height="229.33" />
+    <rect fill="url(#g2)" x="72.00" y="626.67" width="880.00" height="229.33" />
+    <circle fill="none" stroke="url(#chakra)" stroke-width="10" cx="512.00" cy="512.00" r="78.00" />
+    <path fill="none" stroke="url(#chakra)" stroke-width="4" d="M512.00,512.00 L590.00,512.00 M512.00,512.00 L587.34,532.19 M512.00,512.00 L579.55,551.00 M512.00,512.00 L567.15,567.15 M512.00,512.00 L551.00,579.55 M512.00,512.00 L532.19,587.34 M512.00,512.00 L512.00,590.00 M512.00,512.00 L491.81,587.34 M512.00,512.00 L473.00,579.55 M512.00,512.00 L456.85,567.15 M512.00,512.00 L444.45,551.00 M512.00,512.00 L436.66,532.19 M512.00,512.00 L434.00,512.00 M512.00,512.00 L436.66,491.81 M512.00,512.00 L444.45,473.00 M512.00,512.00 L456.85,456.85 M512.00,512.00 L473.00,444.45 M512.00,512.00 L491.81,436.66 M512.00,512.00 L512.00,434.00 M512.00,512.00 L532.19,436.66 M512.00,512.00 L551.00,444.45 M512.00,512.00 L567.15,456.85 M512.00,512.00 L579.55,473.00 M512.00,512.00 L587.34,491.81" />
+    <circle fill="url(#chakra)" cx="512.00" cy="512.00" r="14.00" />
+  </g>
+</svg>

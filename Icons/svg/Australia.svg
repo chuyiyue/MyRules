@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <clipPath id="card_australia">
+      <rect x="72" y="168" width="880" height="688" rx="168" />
+    </clipPath>
+    <linearGradient id="blue" gradientUnits="userSpaceOnUse" x1="72.00" y1="856.00" x2="72.00" y2="168.00">
+      <stop offset="0" stop-color="#011B56" />
+      <stop offset="1" stop-color="#1F3C7B" />
+    </linearGradient>
+    <linearGradient id="white" gradientUnits="userSpaceOnUse" x1="72.00" y1="856.00" x2="72.00" y2="168.00">
+      <stop offset="0" stop-color="#D1D1D1" />
+      <stop offset="1" stop-color="#FFFFFF" />
+    </linearGradient>
+    <linearGradient id="red" gradientUnits="userSpaceOnUse" x1="72.00" y1="856.00" x2="72.00" y2="168.00">
+      <stop offset="0" stop-color="#BB0023" />
+      <stop offset="1" stop-color="#E71F44" />
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#card_australia)">
+    <rect fill="url(#blue)" x="72.00" y="168.00" width="880.00" height="688.00" />
+    <rect fill="url(#blue)" x="72.00" y="168.00" width="369.60" height="344.00" />
+    <path fill="url(#white)" d="M72,188.0 L92.0,168 L441.59999999999997,492.0 L421.59999999999997,512.0 Z M421.59999999999997,168 L441.59999999999997,188.0 L92.0,512.0 L72,492.0 Z" />
+    <path fill="url(#red)" d="M72,176.0 L80.0,168 L441.59999999999997,504.0 L433.59999999999997,512.0 Z M433.59999999999997,168 L441.59999999999997,176.0 L80.0,512.0 L72,504.0 Z" />
+    <rect fill="url(#white)" x="228.80" y="168.00" width="56.00" height="344.00" />
+    <rect fill="url(#white)" x="72.00" y="312.00" width="369.60" height="56.00" />
+    <rect fill="url(#red)" x="240.80" y="168.00" width="32.00" height="344.00" />
+    <rect fill="url(#red)" x="72.00" y="324.00" width="369.60" height="32.00" />
+    <polygon fill="url(#white)" points="256.80,608.48 265.48,638.46 294.33,626.55 276.30,652.03 303.60,667.16 272.44,668.95 277.63,699.73 256.80,676.48 235.97,699.73 241.16,668.95 210.00,667.16 237.30,652.03 219.27,626.55 248.12,638.46" />
+    <polygon fill="url(#white)" points="705.60,408.40 712.18,427.34 732.23,427.75 716.25,439.86 722.06,459.05 705.60,447.60 689.14,459.05 694.95,439.86 678.97,427.75 699.02,427.34" />
+    <polygon fill="url(#white)" points="775.60,502.40 781.24,518.63 798.43,518.98 784.73,529.37 789.71,545.82 775.60,536.00 761.49,545.82 766.47,529.37 752.77,518.98 769.96,518.63" />
+    <polygon fill="url(#white)" points="745.60,610.40 751.71,627.99 770.33,628.37 755.49,639.61 760.88,657.43 745.60,646.80 730.32,657.43 735.71,639.61 720.87,628.37 739.49,627.99" />
+    <polygon fill="url(#white)" points="650.60,574.40 655.77,589.28 671.52,589.60 658.97,599.12 663.53,614.20 650.60,605.20 637.67,614.20 642.23,599.12 629.68,589.60 645.43,589.28" />
+    <polygon fill="url(#white)" points="715.60,544.40 718.42,552.52 727.01,552.69 720.17,557.88 722.65,566.11 715.60,561.20 708.55,566.11 711.03,557.88 704.19,552.69 712.78,552.52" />
+  </g>
+</svg>

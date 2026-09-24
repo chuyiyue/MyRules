@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <clipPath id="card_canada">
+      <rect x="72" y="168" width="880" height="688" rx="168" />
+    </clipPath>
+    <linearGradient id="g0" gradientUnits="userSpaceOnUse" x1="72.00" y1="856.00" x2="72.00" y2="168.00">
+      <stop offset="0" stop-color="#D10000" />
+      <stop offset="1" stop-color="#FF1F1F" />
+    </linearGradient>
+    <linearGradient id="g1" gradientUnits="userSpaceOnUse" x1="292.00" y1="856.00" x2="292.00" y2="168.00">
+      <stop offset="0" stop-color="#D1D1D1" />
+      <stop offset="1" stop-color="#FFFFFF" />
+    </linearGradient>
+    <linearGradient id="g2" gradientUnits="userSpaceOnUse" x1="732.00" y1="856.00" x2="732.00" y2="168.00">
+      <stop offset="0" stop-color="#D10000" />
+      <stop offset="1" stop-color="#FF1F1F" />
+    </linearGradient>
+    <linearGradient id="leaf" gradientUnits="userSpaceOnUse" x1="512.00" y1="642.00" x2="512.00" y2="382.00">
+      <stop offset="0" stop-color="#D10000" />
+      <stop offset="1" stop-color="#FF1F1F" />
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#card_canada)">
+    <rect fill="url(#g0)" x="72.00" y="168.00" width="220.00" height="688.00" />
+    <rect fill="url(#g1)" x="292.00" y="168.00" width="440.00" height="688.00" />
+    <rect fill="url(#g2)" x="732.00" y="168.00" width="220.00" height="688.00" />
+    <path fill="url(#leaf)" d="M512.00,372.00 C530.00,432.00 582.00,412.00 590.00,452.00 C642.00,427.00 637.00,492.00 607.00,504.00 C667.00,527.00 622.00,577.00 582.00,562.00 C590.00,612.00 542.00,592.00 534.00,617.00 L512.00,677.00 L490.00,617.00 C482.00,592.00 434.00,612.00 442.00,562.00 C402.00,577.00 357.00,527.00 417.00,504.00 C387.00,492.00 382.00,427.00 434.00,452.00 C442.00,412.00 494.00,432.00 512.00,372.00 Z" />
+  </g>
+</svg>

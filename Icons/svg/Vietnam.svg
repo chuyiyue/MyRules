@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <clipPath id="card_vietnam">
+      <rect x="72" y="168" width="880" height="688" rx="168" />
+    </clipPath>
+    <linearGradient id="red" gradientUnits="userSpaceOnUse" x1="72.00" y1="856.00" x2="72.00" y2="168.00">
+      <stop offset="0" stop-color="#B31E18" />
+      <stop offset="1" stop-color="#DE3F38" />
+    </linearGradient>
+    <linearGradient id="star" gradientUnits="userSpaceOnUse" x1="512.00" y1="615.20" x2="512.00" y2="408.80">
+      <stop offset="0" stop-color="#D1A800" />
+      <stop offset="1" stop-color="#FFD31F" />
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#card_vietnam)">
+    <rect fill="url(#red)" x="72.00" y="168.00" width="880.00" height="688.00" />
+    <polygon fill="url(#star)" points="512.00,362.00 546.09,465.08 654.66,465.65 567.16,529.92 600.17,633.35 512.00,570.00 423.83,633.35 456.84,529.92 369.34,465.65 477.91,465.08" />
+  </g>
+</svg>

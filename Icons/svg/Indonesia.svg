@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <clipPath id="card_indonesia">
+      <rect x="72" y="168" width="880" height="688" rx="168" />
+    </clipPath>
+    <linearGradient id="g0" gradientUnits="userSpaceOnUse" x1="72.00" y1="512.00" x2="72.00" y2="168.00">
+      <stop offset="0" stop-color="#A90E1F" />
+      <stop offset="1" stop-color="#D42E40" />
+    </linearGradient>
+    <linearGradient id="g1" gradientUnits="userSpaceOnUse" x1="72.00" y1="856.00" x2="72.00" y2="512.00">
+      <stop offset="0" stop-color="#D1D1D1" />
+      <stop offset="1" stop-color="#FFFFFF" />
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#card_indonesia)">
+    <rect fill="url(#g0)" x="72.00" y="168.00" width="880.00" height="344.00" />
+    <rect fill="url(#g1)" x="72.00" y="512.00" width="880.00" height="344.00" />
+  </g>
+</svg>

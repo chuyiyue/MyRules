@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <clipPath id="card_malaysia">
+      <rect x="72" y="168" width="880" height="688" rx="168" />
+    </clipPath>
+    <linearGradient id="g0" gradientUnits="userSpaceOnUse" x1="72.00" y1="217.14" x2="72.00" y2="168.00">
+      <stop offset="0" stop-color="#A70001" />
+      <stop offset="1" stop-color="#D21F1F" />
+    </linearGradient>
+    <linearGradient id="g1" gradientUnits="userSpaceOnUse" x1="72.00" y1="266.29" x2="72.00" y2="217.14">
+      <stop offset="0" stop-color="#D1D1D1" />
+      <stop offset="1" stop-color="#FFFFFF" />
+    </linearGradient>
+    <linearGradient id="g2" gradientUnits="userSpaceOnUse" x1="72.00" y1="315.43" x2="72.00" y2="266.29">
+      <stop offset="0" stop-color="#A70001" />
+      <stop offset="1" stop-color="#D21F1F" />
+    </linearGradient>
+    <linearGradient id="g3" gradientUnits="userSpaceOnUse" x1="72.00" y1="364.57" x2="72.00" y2="315.43">
+      <stop offset="0" stop-color="#D1D1D1" />
+      <stop offset="1" stop-color="#FFFFFF" />
+    </linearGradient>
+    <linearGradient id="g4" gradientUnits="userSpaceOnUse" x1="72.00" y1="413.71" x2="72.00" y2="364.57">
+      <stop offset="0" stop-color="#A70001" />
+      <stop offset="1" stop-color="#D21F1F" />
+    </linearGradient>
+    <linearGradient id="g5" gradientUnits="userSpaceOnUse" x1="72.00" y1="462.86" x2="72.00" y2="413.71">
+      <stop offset="0" stop-color="#D1D1D1" />
+      <stop offset="1" stop-color="#FFFFFF" />
+    </linearGradient>
+    <linearGradient id="g6" gradientUnits="userSpaceOnUse" x1="72.00" y1="512.00" x2="72.00" y2="462.86">
+      <stop offset="0" stop-color="#A70001" />
+      <stop offset="1" stop-color="#D21F1F" />
+    </linearGradient>
+    <linearGradient id="g7" gradientUnits="userSpaceOnUse" x1="72.00" y1="561.14" x2="72.00" y2="512.00">
+      <stop offset="0" stop-color="#D1D1D1" />
+      <stop offset="1" stop-color="#FFFFFF" />
+    </linearGradient>
+    <linearGradient id="g8" gradientUnits="userSpaceOnUse" x1="72.00" y1="610.29" x2="72.00" y2="561.14">
+      <stop offset="0" stop-color="#A70001" />
+      <stop offset="1" stop-color="#D21F1F" />
+    </linearGradient>
+    <linearGradient id="g9" gradientUnits="userSpaceOnUse" x1="72.00" y1="659.43" x2="72.00" y2="610.29">
+      <stop offset="0" stop-color="#D1D1D1" />
+      <stop offset="1" stop-color="#FFFFFF" />
+    </linearGradient>
+    <linearGradient id="g10" gradientUnits="userSpaceOnUse" x1="72.00" y1="708.57" x2="72.00" y2="659.43">
+      <stop offset="0" stop-color="#A70001" />
+      <stop offset="1" stop-color="#D21F1F" />
+    </linearGradient>
+    <linearGradient id="g11" gradientUnits="userSpaceOnUse" x1="72.00" y1="757.71" x2="72.00" y2="708.57">
+      <stop offset="0" stop-color="#D1D1D1" />
+      <stop offset="1" stop-color="#FFFFFF" />
+    </linearGradient>
+    <linearGradient id="g12" gradientUnits="userSpaceOnUse" x1="72.00" y1="806.86" x2="72.00" y2="757.71">
+      <stop offset="0" stop-color="#A70001" />
+      <stop offset="1" stop-color="#D21F1F" />
+    </linearGradient>
+    <linearGradient id="g13" gradientUnits="userSpaceOnUse" x1="72.00" y1="856.00" x2="72.00" y2="806.86">
+      <stop offset="0" stop-color="#D1D1D1" />
+      <stop offset="1" stop-color="#FFFFFF" />
+    </linearGradient>
+    <linearGradient id="cblue" gradientUnits="userSpaceOnUse" x1="72.00" y1="561.14" x2="72.00" y2="168.00">
+      <stop offset="0" stop-color="#010054" />
+      <stop offset="1" stop-color="#1F1F78" />
+    </linearGradient>
+    <linearGradient id="gold" gradientUnits="userSpaceOnUse" x1="72.00" y1="561.14" x2="72.00" y2="168.00">
+      <stop offset="0" stop-color="#D1A700" />
+      <stop offset="1" stop-color="#FFD21F" />
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#card_malaysia)">
+    <rect fill="url(#g0)" x="72.00" y="168.00" width="880.00" height="49.14" />
+    <rect fill="url(#g1)" x="72.00" y="217.14" width="880.00" height="49.14" />
+    <rect fill="url(#g2)" x="72.00" y="266.29" width="880.00" height="49.14" />
+    <rect fill="url(#g3)" x="72.00" y="315.43" width="880.00" height="49.14" />
+    <rect fill="url(#g4)" x="72.00" y="364.57" width="880.00" height="49.14" />
+    <rect fill="url(#g5)" x="72.00" y="413.71" width="880.00" height="49.14" />
+    <rect fill="url(#g6)" x="72.00" y="462.86" width="880.00" height="49.14" />
+    <rect fill="url(#g7)" x="72.00" y="512.00" width="880.00" height="49.14" />
+    <rect fill="url(#g8)" x="72.00" y="561.14" width="880.00" height="49.14" />
+    <rect fill="url(#g9)" x="72.00" y="610.29" width="880.00" height="49.14" />
+    <rect fill="url(#g10)" x="72.00" y="659.43" width="880.00" height="49.14" />
+    <rect fill="url(#g11)" x="72.00" y="708.57" width="880.00" height="49.14" />
+    <rect fill="url(#g12)" x="72.00" y="757.71" width="880.00" height="49.14" />
+    <rect fill="url(#g13)" x="72.00" y="806.86" width="880.00" height="49.14" />
+    <rect fill="url(#cblue)" x="72.00" y="168.00" width="440.00" height="393.14" />
+    <circle fill="url(#gold)" cx="239.20" cy="364.57" r="78.00" />
+    <circle fill="url(#cblue)" cx="261.20" cy="364.57" r="62.00" />
+    <polygon fill="url(#gold)" points="334.20,316.57 338.65,345.07 355.03,321.32 346.67,348.93 371.73,334.64 352.22,355.89 381.00,353.89 354.20,364.57 381.00,375.25 352.22,373.25 371.73,394.50 346.67,380.21 355.03,407.82 338.65,384.07 334.20,412.57 329.75,384.07 313.37,407.82 321.73,380.21 296.67,394.50 316.18,373.25 287.40,375.25 314.20,364.57 287.40,353.89 316.18,355.89 296.67,334.64 321.73,348.93 313.37,321.32 329.75,345.07" />
+  </g>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <clipPath id="card_macao">
+      <rect x="72" y="168" width="880" height="688" rx="168" />
+    </clipPath>
+    <linearGradient id="green" gradientUnits="userSpaceOnUse" x1="72.00" y1="856.00" x2="72.00" y2="168.00">
+      <stop offset="0" stop-color="#066632" />
+      <stop offset="1" stop-color="#258C54" />
+    </linearGradient>
+    <linearGradient id="white" gradientUnits="userSpaceOnUse" x1="72.00" y1="856.00" x2="72.00" y2="168.00">
+      <stop offset="0" stop-color="#D1D1D1" />
+      <stop offset="1" stop-color="#FFFFFF" />
+    </linearGradient>
+    <linearGradient id="gold" gradientUnits="userSpaceOnUse" x1="72.00" y1="477.60" x2="72.00" y2="208.00">
+      <stop offset="0" stop-color="#CFAB12" />
+      <stop offset="1" stop-color="#FCD732" />
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#card_macao)">
+    <rect fill="url(#green)" x="72.00" y="168.00" width="880.00" height="688.00" />
+    <polygon fill="url(#gold)" points="512.00,382.00 520.23,406.67 546.24,406.88 525.31,422.33 533.16,447.12 512.00,432.00 490.84,447.12 498.69,422.33 477.76,406.88 503.77,406.67" />
+    <polygon fill="url(#gold)" points="467.00,388.38 470.53,399.52 482.22,399.43 472.71,406.23 476.41,417.32 467.00,410.38 457.60,417.32 461.30,406.23 451.79,399.43 463.48,399.52" />
+    <polygon fill="url(#gold)" points="479.51,352.73 483.03,363.88 494.72,363.78 485.21,370.58 488.91,381.67 479.51,374.73 470.10,381.67 473.80,370.58 464.29,363.78 475.98,363.88" />
+    <polygon fill="url(#gold)" points="544.49,352.73 548.02,363.88 559.71,363.78 550.20,370.58 553.90,381.67 544.49,374.73 535.09,381.67 538.79,370.58 529.28,363.78 540.97,363.88" />
+    <polygon fill="url(#gold)" points="557.00,388.38 560.52,399.52 572.21,399.43 562.70,406.23 566.40,417.32 557.00,410.38 547.59,417.32 551.29,406.23 541.78,399.43 553.47,399.52" />
+    <path fill="url(#white)" d="M512.00,644.56 Q434.06,574.56 512.00,514.56 M512.00,644.56 Q454.15,563.92 512.00,514.56 M512.00,644.56 Q481.22,556.97 512.00,514.56 M512.00,644.56 Q512.00,554.56 512.00,514.56 M512.00,644.56 Q542.78,556.97 512.00,514.56 M512.00,644.56 Q569.85,563.92 512.00,514.56 M512.00,644.56 Q589.94,574.56 512.00,514.56" />
+    <path fill="url(#white)" d="M352.00,684.56 Q512.00,634.56 672.00,684.56" />
+  </g>
+</svg>

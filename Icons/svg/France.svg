@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <clipPath id="card_france">
+      <rect x="72" y="168" width="880" height="688" rx="168" />
+    </clipPath>
+    <linearGradient id="g0" gradientUnits="userSpaceOnUse" x1="72.00" y1="856.00" x2="72.00" y2="168.00">
+      <stop offset="0" stop-color="#001D7A" />
+      <stop offset="1" stop-color="#1F3DA2" />
+    </linearGradient>
+    <linearGradient id="g1" gradientUnits="userSpaceOnUse" x1="365.33" y1="856.00" x2="365.33" y2="168.00">
+      <stop offset="0" stop-color="#D1D1D1" />
+      <stop offset="1" stop-color="#FFFFFF" />
+    </linearGradient>
+    <linearGradient id="g2" gradientUnits="userSpaceOnUse" x1="658.67" y1="856.00" x2="658.67" y2="168.00">
+      <stop offset="0" stop-color="#C2222F" />
+      <stop offset="1" stop-color="#EF4351" />
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#card_france)">
+    <rect fill="url(#g0)" x="72.00" y="168.00" width="293.33" height="688.00" />
+    <rect fill="url(#g1)" x="365.33" y="168.00" width="293.33" height="688.00" />
+    <rect fill="url(#g2)" x="658.67" y="168.00" width="293.33" height="688.00" />
+  </g>
+</svg>

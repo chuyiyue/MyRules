@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <clipPath id="card_turkey">
+      <rect x="72" y="168" width="880" height="688" rx="168" />
+    </clipPath>
+    <linearGradient id="red" gradientUnits="userSpaceOnUse" x1="72.00" y1="856.00" x2="72.00" y2="168.00">
+      <stop offset="0" stop-color="#BA0813" />
+      <stop offset="1" stop-color="#E62733" />
+    </linearGradient>
+    <linearGradient id="w" gradientUnits="userSpaceOnUse" x1="72.00" y1="856.00" x2="72.00" y2="168.00">
+      <stop offset="0" stop-color="#D1D1D1" />
+      <stop offset="1" stop-color="#FFFFFF" />
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#card_turkey)">
+    <rect fill="url(#red)" x="72.00" y="168.00" width="880.00" height="688.00" />
+    <circle fill="url(#w)" cx="441.60" cy="512.00" r="150.00" />
+    <circle fill="url(#red)" cx="479.60" cy="512.00" r="120.00" />
+    <polygon fill="url(#w)" points="670.66,501.23 631.17,522.52 638.71,566.74 606.26,535.77 566.53,556.60 585.96,516.17 553.87,484.82 598.33,490.81 618.23,450.60 626.27,494.74" />
+  </g>
+</svg>
