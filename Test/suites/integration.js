@@ -91,7 +91,7 @@ function runIntegrationTests(h, api, meta, fx, loadScript, scriptFile) {
       h.assert(out.rules.includes('MATCH,默认代理'), 'MATCH 应指向默认代理');
       h.assert(!out.rules.some((rule) => /,(Google|AI|Telegram|Steam|AdBlock)$/.test(rule)), '不应生成 APP 分流规则');
       const def = groupByName(out['proxy-groups'], '默认代理');
-      for (const name of ['香港', '日本', '美国', '新加坡', '台湾省', '低倍率节点', '高倍率节点', '自动选择']) {
+      for (const name of ['香港', '日本', '美国', '新加坡', '台湾', '低倍率节点', '高倍率节点', '自动选择']) {
         h.assert(def.proxies.includes(name), `默认代理应含 ${name}`);
       }
     });

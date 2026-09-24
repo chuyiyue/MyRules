@@ -270,7 +270,7 @@ proxy-groups:
   - name: '默认代理'
     <<: *group_common_select
     proxies:
-      ['香港', '日本', '美国', '新加坡', '台湾省', '低倍率节点', '高倍率节点', '家宽', '自动选择', '其他节点']
+      ['香港', '日本', '美国', '新加坡', '台湾', '低倍率节点', '高倍率节点', '家宽', '自动选择', '其他节点']
     icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Proxy.svg'
 
   - name: '自动选择'
@@ -314,12 +314,12 @@ proxy-groups:
   - name: '新加坡-自动选择'
     <<: [*group_common_auto, *SG_filter, *home_exclude]
 
-  - name: '台湾省'
+  - name: '台湾'
     <<: [*group_common_select, *TW_filter, *home_exclude]
     include-all: true
-    proxies: ['台湾省-自动选择']
+    proxies: ['台湾-自动选择']
     icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Taiwan.svg'
-  - name: '台湾省-自动选择'
+  - name: '台湾-自动选择'
     <<: [*group_common_auto, *TW_filter, *home_exclude]
 
   - name: '低倍率节点'
