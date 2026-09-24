@@ -104,7 +104,7 @@ function runIntegrationTests(h, api, meta, fx, loadScript, scriptFile) {
         { name: 'US Home 03', type: 'ss', server: 'ush.example.com', port: 443, cipher: 'aes-256-gcm', password: 'x' },
       );
       const out = api.main(cfg);
-      const home = groupByName(out['proxy-groups'], '🏠 家宽');
+      const home = groupByName(out['proxy-groups'], '家宽');
       h.assert(home, '应生成家宽组');
       h.assertEqual(home.type, 'url-test', '家宽组应为测速组');
       h.assert(home.proxies.includes('🇭🇰 香港家宽 01'));
@@ -113,8 +113,10 @@ function runIntegrationTests(h, api, meta, fx, loadScript, scriptFile) {
       h.assert(!groupByName(out['proxy-groups'], '家宽-自动选择'), '不应再拆家宽-自动选择');
       h.assert(!groupByName(out['proxy-groups'], '香港').proxies.includes('🇭🇰 香港家宽 01'), '家宽不应进入香港组');
       h.assert(!groupByName(out['proxy-groups'], '日本').proxies.includes('🇯🇵 日本住宅 02'), '家宽不应进入日本组');
-      h.assertEqual(groupByName(out['proxy-groups'], '默认代理').proxies[0], '🏠 家宽', '家宽应排在默认代理最前');
-      h.assert(groupByName(out['proxy-groups'], 'GLOBAL').proxies.includes('🏠 家宽'), 'GLOBAL 应含家宽');
+      const defHome = groupByName(out['proxy-groups'], '默认代理').proxies;
+      h.assert(defHome.includes('家宽'), '默认代理应含家宽');
+      h.assert(defHome.indexOf('家宽') < defHome.indexOf('其他地区'), '家宽应在其他地区前面');
+      h.assert(groupByName(out['proxy-groups'], 'GLOBAL').proxies.includes('家宽'), 'GLOBAL 应含家宽');
     });
     h.test('英德韩进入默认代理，直连组隐藏', () => {
       const cfg = fx.typicalSubscription();
@@ -126,12 +128,12 @@ function runIntegrationTests(h, api, meta, fx, loadScript, scriptFile) {
       const out = api.main(cfg);
       const def = groupByName(out['proxy-groups'], '默认代理');
       h.assert(groupByName(out['proxy-groups'], '亚太'), '韩国应并入亚太');
-      h.assert(groupByName(out['proxy-groups'], '🇪🇺 欧洲'), '英德应并入欧洲');
+      h.assert(groupByName(out['proxy-groups'], '欧洲'), '英德应并入欧洲');
       h.assert(!groupByName(out['proxy-groups'], '韩国'), '不应再单独生成韩国组');
       h.assert(!groupByName(out['proxy-groups'], '英国'), '不应再单独生成英国组');
       h.assert(!groupByName(out['proxy-groups'], '德国'), '不应再单独生成德国组');
       h.assert(def.proxies.includes('亚太'), '默认代理应含亚太');
-      h.assert(def.proxies.includes('🇪🇺 欧洲'), '默认代理应含欧洲');
+      h.assert(def.proxies.includes('欧洲'), '默认代理应含欧洲');
       h.assertEqual(groupByName(out['proxy-groups'], '直连').hidden, true, '直连组应隐藏');
     });
   }

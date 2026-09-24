@@ -268,7 +268,7 @@ const regionDefinitions = [
 ];
 
 // 家宽节点：各地区家宽全部聚合进同一组，不进入地区组
-const homeBroadbandName = '🏠 家宽';
+const homeBroadbandName = '家宽';
 const homeBroadbandRegex =
   /家宽|住宅(?:宽带|IP)?|家庭宽带|家用宽带|(?<![A-Za-z])home(?:\s*(?:ip|isp|broad(?:band)?))?(?![A-Za-z])|(?<![A-Za-z])residential(?![A-Za-z])/iu;
 function isHomeBroadband(proxyName) {
@@ -613,9 +613,6 @@ function buildRegionGroups(filteredProxies, customProxies) {
     [lowRateRegionName]: `${iconBaseUrl}Available.svg`,
     [highRateRegionName]: `${iconBaseUrl}Airport.svg`,
   };
-  const displayNames = {
-    欧洲: '🇪🇺 欧洲',
-  };
   const displayOrder = ['香港', '日本', '新加坡', '台湾', '美国', '亚太', '欧洲', '美洲'];
 
   const buckets = Object.fromEntries([...displayOrder, lowRateRegionName, highRateRegionName].map((n) => [n, []]));
@@ -647,13 +644,9 @@ function buildRegionGroups(filteredProxies, customProxies) {
 
   const generatedRegionGroups = [];
 
-  if (homeProxies.length > 0) {
-    generatedRegionGroups.push(...createRegionGroup(homeBroadbandName, `${iconBaseUrl}Static.svg`, homeProxies));
-  }
-
   for (const name of displayOrder) {
     if (buckets[name].length > 0) {
-      generatedRegionGroups.push(...createRegionGroup(displayNames[name] || name, displayIcons[name], buckets[name]));
+      generatedRegionGroups.push(...createRegionGroup(name, displayIcons[name], buckets[name]));
     }
   }
 
@@ -663,6 +656,10 @@ function buildRegionGroups(filteredProxies, customProxies) {
         generatedRegionGroups.push(...createRegionGroup(rate.name, rate.icon, buckets[rate.name]));
       }
     }
+  }
+
+  if (homeProxies.length > 0) {
+    generatedRegionGroups.push(...createRegionGroup(homeBroadbandName, `${iconBaseUrl}Static.svg`, homeProxies));
   }
 
   if (otherProxies.length > 0) {

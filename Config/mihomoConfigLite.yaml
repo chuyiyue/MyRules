@@ -282,7 +282,7 @@ proxy-groups:
   - name: '默认代理'
     <<: *group_common_select
     proxies:
-      ['🏠 家宽', '香港', '日本', '新加坡', '台湾', '美国', '亚太', '🇪🇺 欧洲', '美洲', '低倍率节点', '高倍率节点', '自动选择', '其他地区']
+      ['香港', '日本', '新加坡', '台湾', '美国', '亚太', '欧洲', '美洲', '家宽', '低倍率节点', '高倍率节点', '自动选择', '其他地区']
     icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/Proxy.svg'
 
   - name: '自动选择'
@@ -293,12 +293,6 @@ proxy-groups:
     proxies: ['🇨🇳 直连 | 双栈', '🇨🇳 直连 | IPv4优先', '🇨🇳 直连 | IPv6优先', '🇨🇳 直连 | 仅IPv4', '🇨🇳 直连 | 仅IPv6']
     hidden: true
     icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/China.svg'
-
-  # 家宽置顶，再地区
-  - name: '🏠 家宽'
-    <<: [*group_common_auto, *home_filter]
-    hidden: false
-    icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/Static.svg'
 
   - name: '香港'
     <<: [*group_common_auto, *HK_filter, *home_exclude]
@@ -330,7 +324,7 @@ proxy-groups:
     hidden: false
     icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/Global.svg'
 
-  - name: '🇪🇺 欧洲'
+  - name: '欧洲'
     <<: [*group_common_auto, *EU_filter, *home_exclude]
     hidden: false
     icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/Europe.svg'
@@ -349,6 +343,11 @@ proxy-groups:
     <<: [*group_common_auto, *high_filter, *home_exclude]
     hidden: false
     icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/Airport.svg'
+
+  - name: '家宽'
+    <<: [*group_common_auto, *home_filter]
+    hidden: false
+    icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/Static.svg'
 
   - name: '其他地区'
     <<: [*group_common_auto, *exclude_filter]
