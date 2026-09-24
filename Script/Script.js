@@ -129,10 +129,28 @@ const regionDefinitions = [
     icon: `${iconBaseUrl}HongKong.svg`,
   },
   {
+    name: '台湾',
+    flag: '🇹🇼',
+    regex: /🇹🇼|台湾|台北|高雄|(?<![A-Za-z])TWN?(?![A-Za-z])|taiwan/i,
+    icon: `${iconBaseUrl}Taiwan.svg`,
+  },
+  {
     name: '日本',
     flag: '🇯🇵',
     regex: /🇯🇵|日本|东京|大阪|京都|(?<![A-Za-z])JPN?(?![A-Za-z])|japan/i,
     icon: `${iconBaseUrl}Japan.svg`,
+  },
+  {
+    name: '韩国',
+    flag: '🇰🇷',
+    regex: /🇰🇷|韩国|首尔|(?<![A-Za-z])KOR?(?![A-Za-z])|korea|seoul/i,
+    icon: `${iconBaseUrl}WorldMap.svg`,
+  },
+  {
+    name: '新加坡',
+    flag: '🇸🇬',
+    regex: /🇸🇬|新加坡|狮城|(?<![A-Za-z])SGP?(?![A-Za-z])|singapore/i,
+    icon: `${iconBaseUrl}Singapore.svg`,
   },
   {
     name: '美国',
@@ -142,16 +160,94 @@ const regionDefinitions = [
     icon: `${iconBaseUrl}America.svg`,
   },
   {
-    name: '新加坡',
-    flag: '🇸🇬',
-    regex: /🇸🇬|新加坡|狮城|(?<![A-Za-z])SGP?(?![A-Za-z])|singapore/i,
-    icon: `${iconBaseUrl}Singapore.svg`,
+    name: '英国',
+    flag: '🇬🇧',
+    regex: /🇬🇧|英国|伦敦|英格兰|(?<![A-Za-z])UK(?![A-Za-z])|(?<![A-Za-z])GBR?(?![A-Za-z])|united\s*kingdom|london/i,
+    icon: `${iconBaseUrl}WorldMap.svg`,
   },
   {
-    name: '台湾',
-    flag: '🇹🇼',
-    regex: /🇹🇼|台湾|台北|高雄|(?<![A-Za-z])TWN?(?![A-Za-z])|taiwan/i,
-    icon: `${iconBaseUrl}Taiwan.svg`,
+    name: '德国',
+    flag: '🇩🇪',
+    regex: /🇩🇪|德国|法兰克福|柏林|(?<![A-Za-z])DEU?(?![A-Za-z])|germany|frankfurt/i,
+    icon: `${iconBaseUrl}WorldMap.svg`,
+  },
+  {
+    name: '法国',
+    flag: '🇫🇷',
+    regex: /🇫🇷|法国|巴黎|(?<![A-Za-z])FRA?(?![A-Za-z])|france|paris/i,
+    icon: `${iconBaseUrl}WorldMap.svg`,
+  },
+  {
+    name: '加拿大',
+    flag: '🇨🇦',
+    regex: /🇨🇦|加拿大|多伦多|温哥华|(?<![A-Za-z])CAN?(?![A-Za-z])|canada|toronto/i,
+    icon: `${iconBaseUrl}WorldMap.svg`,
+  },
+  {
+    name: '澳大利亚',
+    flag: '🇦🇺',
+    regex: /🇦🇺|澳大利亚|澳洲|悉尼|墨尔本|(?<![A-Za-z])AUS?(?![A-Za-z])|australia|sydney/i,
+    icon: `${iconBaseUrl}WorldMap.svg`,
+  },
+  {
+    name: '荷兰',
+    flag: '🇳🇱',
+    regex: /🇳🇱|荷兰|阿姆斯特丹|(?<![A-Za-z])NLD?(?![A-Za-z])|netherlands|amsterdam/i,
+    icon: `${iconBaseUrl}WorldMap.svg`,
+  },
+  {
+    name: '印度',
+    flag: '🇮🇳',
+    regex: /🇮🇳|印度(?!尼西亚)|孟买|(?<![A-Za-z])IND(?![A-Za-z])|(?<![A-Za-z])india(?![A-Za-z])/i,
+    icon: `${iconBaseUrl}WorldMap.svg`,
+  },
+  {
+    name: '马来西亚',
+    flag: '🇲🇾',
+    regex: /🇲🇾|马来西亚|马来|吉隆坡|(?<![A-Za-z])MYS?(?![A-Za-z])|malaysia/i,
+    icon: `${iconBaseUrl}WorldMap.svg`,
+  },
+  {
+    name: '泰国',
+    flag: '🇹🇭',
+    regex: /🇹🇭|泰国|曼谷|(?<![A-Za-z])THA?(?![A-Za-z])|thailand|bangkok/i,
+    icon: `${iconBaseUrl}WorldMap.svg`,
+  },
+  {
+    name: '菲律宾',
+    flag: '🇵🇭',
+    regex: /🇵🇭|菲律宾|马尼拉|(?<![A-Za-z])PHL?(?![A-Za-z])|philippines/i,
+    icon: `${iconBaseUrl}WorldMap.svg`,
+  },
+  {
+    name: '越南',
+    flag: '🇻🇳',
+    regex: /🇻🇳|越南|胡志明|(?<![A-Za-z])VNM?(?![A-Za-z])|vietnam/i,
+    icon: `${iconBaseUrl}WorldMap.svg`,
+  },
+  {
+    name: '印尼',
+    flag: '🇮🇩',
+    regex: /🇮🇩|印尼|印度尼西亚|雅加达|(?<![A-Za-z])IDN(?![A-Za-z])|indonesia/i,
+    icon: `${iconBaseUrl}WorldMap.svg`,
+  },
+  {
+    name: '俄罗斯',
+    flag: '🇷🇺',
+    regex: /🇷🇺|俄罗斯|莫斯科|(?<![A-Za-z])RUS?(?![A-Za-z])|russia|moscow/i,
+    icon: `${iconBaseUrl}WorldMap.svg`,
+  },
+  {
+    name: '土耳其',
+    flag: '🇹🇷',
+    regex: /🇹🇷|土耳其|伊斯坦布尔|(?<![A-Za-z])TUR?(?![A-Za-z])|turkey|istanbul/i,
+    icon: `${iconBaseUrl}WorldMap.svg`,
+  },
+  {
+    name: '澳门',
+    flag: '🇲🇴',
+    regex: /🇲🇴|澳门|(?<![A-Za-z])MO(?![A-Za-z])|macao|macau/i,
+    icon: `${iconBaseUrl}WorldMap.svg`,
   },
 ];
 
@@ -683,7 +779,7 @@ function buildFunctionalGroups(filteredProxies, generatedRegionGroups, customize
     name: '直连',
     proxies: [...directProxies.map((p) => p.name)],
     icon: `${iconBaseUrl}China.svg`,
-    hidden: hideManualSelectGroupEnabled,
+    hidden: true,
   };
 
   const globalGroup = {

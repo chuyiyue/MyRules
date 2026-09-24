@@ -116,6 +116,21 @@ function runIntegrationTests(h, api, meta, fx, loadScript, scriptFile) {
       h.assert(groupByName(out['proxy-groups'], '默认代理').proxies.includes('家宽'), '默认代理应含家宽');
       h.assert(groupByName(out['proxy-groups'], 'GLOBAL').proxies.includes('家宽'), 'GLOBAL 应含家宽');
     });
+    h.test('英德韩进入默认代理，直连组隐藏', () => {
+      const cfg = fx.typicalSubscription();
+      cfg.proxies.push(
+        { name: '韩国 首尔 01', type: 'ss', server: 'kr.example.com', port: 443, cipher: 'aes-256-gcm', password: 'x' },
+        { name: 'UK-London-02', type: 'ss', server: 'uk.example.com', port: 443, cipher: 'aes-256-gcm', password: 'x' },
+        { name: '德国 法兰克福', type: 'ss', server: 'de.example.com', port: 443, cipher: 'aes-256-gcm', password: 'x' },
+      );
+      const out = api.main(cfg);
+      const def = groupByName(out['proxy-groups'], '默认代理');
+      for (const name of ['韩国', '英国', '德国']) {
+        h.assert(groupByName(out['proxy-groups'], name), `应生成 ${name}`);
+        h.assert(def.proxies.includes(name), `默认代理应含 ${name}`);
+      }
+      h.assertEqual(groupByName(out['proxy-groups'], '直连').hidden, true, '直连组应隐藏');
+    });
   }
 
   // ---------------- DNS 与 hosts ----------------

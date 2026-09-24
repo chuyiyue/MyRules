@@ -40,6 +40,12 @@ function runUnitTests(h, api, meta) {
   h.test('US-LosAngeles-02 → 美国', () => h.assert(matched('US-LosAngeles-02').includes('美国')));
   h.test('SG 01 | 新加坡 → 新加坡', () => h.assert(matched('SG 01 | 新加坡').includes('新加坡')));
   h.test('台湾 01 → 台湾', () => h.assert(matched('台湾 01').includes('台湾')));
+  h.test('韩国 / 英国 / 德国（精简版）', () => {
+    if (meta.full) return;
+    h.assert(matched('韩国 01').includes('韩国'));
+    h.assert(matched('UK-London-02').includes('英国'));
+    h.assert(matched('德国 法兰克福').includes('德国'));
+  });
   h.test('日本 0.3x 流量 → 低倍率节点 + 日本', () => {
     const n = matched('日本 0.3x 流量');
     h.assert(n.includes('低倍率节点'));
