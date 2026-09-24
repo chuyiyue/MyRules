@@ -243,6 +243,18 @@ group_filter:
     }
   SG_filter: &SG_filter { filter: '(?i)(🇸🇬|新加坡|狮城|(?<![A-Za-z])SGP?(?![A-Za-z])|singapore)' }
   TW_filter: &TW_filter { filter: '(?i)(🇹🇼|台湾|台北|高雄|(?<![A-Za-z])TWN?(?![A-Za-z])|taiwan)' }
+    APAC_filter:
+    &APAC_filter {
+      filter: '(?i)(🇰🇷|韩国|首尔|(?<![A-Za-z])KOR?(?![A-Za-z])|korea|🇦🇺|澳大利亚|澳洲|悉尼|(?<![A-Za-z])AUS?(?![A-Za-z])|australia|🇮🇳|印度(?!尼西亚)|(?<![A-Za-z])india(?![A-Za-z])|🇲🇾|马来西亚|马来|🇹🇭|泰国|🇵🇭|菲律宾|🇻🇳|越南|🇮🇩|印尼|印度尼西亚|🇲🇴|澳门|macao|macau)',
+    }
+  EU_filter:
+    &EU_filter {
+      filter: '(?i)(🇬🇧|英国|伦敦|(?<![A-Za-z])UK(?![A-Za-z])|germany|德国|🇫🇷|法国|荷兰|amsterdam|🇷🇺|俄罗斯|🇹🇷|土耳其)',
+    }
+  AM_filter:
+    &AM_filter {
+      filter: '(?i)(🇨🇦|加拿大|多伦多|温哥华|(?<![A-Za-z])CAN?(?![A-Za-z])|canada)',
+    }
   low_filter:
     &low_filter {
       filter: '(?i)(^(?!.*(?:剩|期)).*(?:(?<!\d)0\.[0-5]|(?<=[ \[\(|｜丨∣┃\-‐–—−－﹣])0[*×✕✖⨯⨉x倍])|(?:(?<=[ \[\(|｜丨∣┃\-‐–—−－﹣])[*×✕✖⨯⨉x]0(?=[ \)\]]|倍|$))|^(?!.*(?:客户端|软件)).*下载|低倍|免费|(?<![A-Za-z])free(?![A-Za-z]))',
@@ -270,7 +282,7 @@ proxy-groups:
   - name: '默认代理'
     <<: *group_common_select
     proxies:
-      ['香港', '日本', '美国', '新加坡', '台湾', '低倍率节点', '高倍率节点', '家宽', '自动选择', '其他节点']
+      ['🏠 家宽', '香港', '日本', '新加坡', '台湾', '美国', '亚太', '欧洲', '美洲', '低倍率节点', '高倍率节点', '自动选择', '其他地区']
     icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/Proxy.svg'
 
   - name: '自动选择'
@@ -282,7 +294,12 @@ proxy-groups:
     hidden: true
     icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/China.svg'
 
-  # 地区策略组（排除家宽，家宽单独聚合）
+  # 家宽置顶，再地区
+  - name: '🏠 家宽'
+    <<: [*group_common_auto, *home_filter]
+    hidden: false
+    icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/Static.svg'
+
   - name: '香港'
     <<: [*group_common_auto, *HK_filter, *home_exclude]
     hidden: false
@@ -308,6 +325,21 @@ proxy-groups:
     hidden: false
     icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/Taiwan.svg'
 
+  - name: '亚太'
+    <<: [*group_common_auto, *APAC_filter, *home_exclude]
+    hidden: false
+    icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/Global.svg'
+
+  - name: '欧洲'
+    <<: [*group_common_auto, *EU_filter, *home_exclude]
+    hidden: false
+    icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/Britain.svg'
+
+  - name: '美洲'
+    <<: [*group_common_auto, *AM_filter, *home_exclude]
+    hidden: false
+    icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/Canada.svg'
+
   - name: '低倍率节点'
     <<: [*group_common_auto, *low_filter, *home_exclude]
     hidden: false
@@ -318,12 +350,7 @@ proxy-groups:
     hidden: false
     icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/Airport.svg'
 
-  - name: '家宽'
-    <<: [*group_common_auto, *home_filter]
-    hidden: false
-    icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/Static.svg'
-
-  - name: '其他节点'
+  - name: '其他地区'
     <<: [*group_common_auto, *exclude_filter]
     hidden: false
     icon: 'https://fastly.jsdelivr.net/gh/chuyiyue/MyRules@main/Icons/svg/WorldMap.svg'

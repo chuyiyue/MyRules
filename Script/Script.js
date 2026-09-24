@@ -142,6 +142,7 @@ const regionDefinitions = [
   },
   {
     name: '韩国',
+    bucket: '亚太',
     flag: '🇰🇷',
     regex: /🇰🇷|韩国|首尔|(?<![A-Za-z])KOR?(?![A-Za-z])|korea|seoul/i,
     icon: `${iconBaseUrl}Korea.svg`,
@@ -161,90 +162,105 @@ const regionDefinitions = [
   },
   {
     name: '英国',
+    bucket: '欧洲',
     flag: '🇬🇧',
     regex: /🇬🇧|英国|伦敦|英格兰|(?<![A-Za-z])UK(?![A-Za-z])|(?<![A-Za-z])GBR?(?![A-Za-z])|united\s*kingdom|london/i,
     icon: `${iconBaseUrl}Britain.svg`,
   },
   {
     name: '德国',
+    bucket: '欧洲',
     flag: '🇩🇪',
     regex: /🇩🇪|德国|法兰克福|柏林|(?<![A-Za-z])DEU?(?![A-Za-z])|germany|frankfurt/i,
     icon: `${iconBaseUrl}Germany.svg`,
   },
   {
     name: '法国',
+    bucket: '欧洲',
     flag: '🇫🇷',
     regex: /🇫🇷|法国|巴黎|(?<![A-Za-z])FRA?(?![A-Za-z])|france|paris/i,
     icon: `${iconBaseUrl}France.svg`,
   },
   {
     name: '加拿大',
+    bucket: '美洲',
     flag: '🇨🇦',
     regex: /🇨🇦|加拿大|多伦多|温哥华|(?<![A-Za-z])CAN?(?![A-Za-z])|canada|toronto/i,
     icon: `${iconBaseUrl}Canada.svg`,
   },
   {
     name: '澳大利亚',
+    bucket: '亚太',
     flag: '🇦🇺',
     regex: /🇦🇺|澳大利亚|澳洲|悉尼|墨尔本|(?<![A-Za-z])AUS?(?![A-Za-z])|australia|sydney/i,
     icon: `${iconBaseUrl}Australia.svg`,
   },
   {
     name: '荷兰',
+    bucket: '欧洲',
     flag: '🇳🇱',
     regex: /🇳🇱|荷兰|阿姆斯特丹|(?<![A-Za-z])NLD?(?![A-Za-z])|netherlands|amsterdam/i,
     icon: `${iconBaseUrl}Netherlands.svg`,
   },
   {
     name: '印度',
+    bucket: '亚太',
     flag: '🇮🇳',
     regex: /🇮🇳|印度(?!尼西亚)|孟买|(?<![A-Za-z])IND(?![A-Za-z])|(?<![A-Za-z])india(?![A-Za-z])/i,
     icon: `${iconBaseUrl}India.svg`,
   },
   {
     name: '马来西亚',
+    bucket: '亚太',
     flag: '🇲🇾',
     regex: /🇲🇾|马来西亚|马来|吉隆坡|(?<![A-Za-z])MYS?(?![A-Za-z])|malaysia/i,
     icon: `${iconBaseUrl}Malaysia.svg`,
   },
   {
     name: '泰国',
+    bucket: '亚太',
     flag: '🇹🇭',
     regex: /🇹🇭|泰国|曼谷|(?<![A-Za-z])THA?(?![A-Za-z])|thailand|bangkok/i,
     icon: `${iconBaseUrl}Thailand.svg`,
   },
   {
     name: '菲律宾',
+    bucket: '亚太',
     flag: '🇵🇭',
     regex: /🇵🇭|菲律宾|马尼拉|(?<![A-Za-z])PHL?(?![A-Za-z])|philippines/i,
     icon: `${iconBaseUrl}Philippines.svg`,
   },
   {
     name: '越南',
+    bucket: '亚太',
     flag: '🇻🇳',
     regex: /🇻🇳|越南|胡志明|(?<![A-Za-z])VNM?(?![A-Za-z])|vietnam/i,
     icon: `${iconBaseUrl}Vietnam.svg`,
   },
   {
     name: '印尼',
+    bucket: '亚太',
     flag: '🇮🇩',
     regex: /🇮🇩|印尼|印度尼西亚|雅加达|(?<![A-Za-z])IDN(?![A-Za-z])|indonesia/i,
     icon: `${iconBaseUrl}Indonesia.svg`,
   },
   {
     name: '俄罗斯',
+    bucket: '欧洲',
     flag: '🇷🇺',
     regex: /🇷🇺|俄罗斯|莫斯科|(?<![A-Za-z])RUS?(?![A-Za-z])|russia|moscow/i,
     icon: `${iconBaseUrl}Russia.svg`,
   },
   {
     name: '土耳其',
+    bucket: '欧洲',
     flag: '🇹🇷',
     regex: /🇹🇷|土耳其|伊斯坦布尔|(?<![A-Za-z])TUR?(?![A-Za-z])|turkey|istanbul/i,
     icon: `${iconBaseUrl}Turkey.svg`,
   },
   {
     name: '澳门',
+    bucket: '亚太',
     flag: '🇲🇴',
     regex: /🇲🇴|澳门|(?<![A-Za-z])MO(?![A-Za-z])|macao|macau/i,
     icon: `${iconBaseUrl}Macao.svg`,
@@ -252,7 +268,7 @@ const regionDefinitions = [
 ];
 
 // 家宽节点：各地区家宽全部聚合进同一组，不进入地区组
-const homeBroadbandName = '家宽';
+const homeBroadbandName = '🏠 家宽';
 const homeBroadbandRegex =
   /家宽|住宅(?:宽带|IP)?|家庭宽带|家用宽带|(?<![A-Za-z])home(?:\s*(?:ip|isp|broad(?:band)?))?(?![A-Za-z])|(?<![A-Za-z])residential(?![A-Za-z])/iu;
 function isHomeBroadband(proxyName) {
@@ -580,12 +596,26 @@ function createRegionGroup(name, icon, proxies) {
 }
 
 /**
- * 将节点按地区/倍率归类，构建地区策略组、倍率策略组与“其他节点”组
+ * 将节点按展示组归类：家宽置顶，港/日/新/台/美单独成组，其余并入亚太/欧洲/美洲，未识别为其他地区。
  */
 function buildRegionGroups(filteredProxies, customProxies) {
   const generateRateGroupEnabled = ruleOptionsEnable.生成倍率组;
 
-  const regionGroups = Object.fromEntries(allRegionDefinitions.map(({ name }) => [name, []]));
+  const displayIcons = {
+    香港: `${iconBaseUrl}HongKong.svg`,
+    日本: `${iconBaseUrl}Japan.svg`,
+    新加坡: `${iconBaseUrl}Singapore.svg`,
+    台湾: `${iconBaseUrl}Taiwan.svg`,
+    美国: `${iconBaseUrl}America.svg`,
+    亚太: `${iconBaseUrl}Global.svg`,
+    欧洲: `${iconBaseUrl}Britain.svg`,
+    美洲: `${iconBaseUrl}Canada.svg`,
+    [lowRateRegionName]: `${iconBaseUrl}Available.svg`,
+    [highRateRegionName]: `${iconBaseUrl}Airport.svg`,
+  };
+  const displayOrder = ['香港', '日本', '新加坡', '台湾', '美国', '亚太', '欧洲', '美洲'];
+
+  const buckets = Object.fromEntries([...displayOrder, lowRateRegionName, highRateRegionName].map((n) => [n, []]));
   const otherProxies = [];
   const homeProxies = [];
 
@@ -596,27 +626,44 @@ function buildRegionGroups(filteredProxies, customProxies) {
     }
 
     const matchedRegions = getMatchedRegions(proxy.name);
-    const isRegionProxy = matchedRegions.some((region) => regionDefinitions.includes(region));
+    const geoRegions = matchedRegions.filter((region) => regionDefinitions.includes(region));
+    const rateRegions = matchedRegions.filter((region) => rateRegionDefinitions.includes(region));
 
-    for (const region of matchedRegions) {
-      regionGroups[region.name].push(proxy.name);
+    for (const region of geoRegions) {
+      const bucket = region.bucket || region.name;
+      if (buckets[bucket]) buckets[bucket].push(proxy.name);
+    }
+    for (const region of rateRegions) {
+      buckets[region.name].push(proxy.name);
     }
 
-    if (!isRegionProxy) {
+    if (!geoRegions.length) {
       otherProxies.push(proxy.name);
     }
   }
 
-  const generatedRegionGroups = allRegionDefinitions
-    .filter((r) => regionGroups[r.name].length > 0 && (generateRateGroupEnabled || !rateRegionDefinitions.includes(r)))
-    .flatMap((r) => createRegionGroup(r.name, r.icon, regionGroups[r.name]));
+  const generatedRegionGroups = [];
 
   if (homeProxies.length > 0) {
     generatedRegionGroups.push(...createRegionGroup(homeBroadbandName, `${iconBaseUrl}Static.svg`, homeProxies));
   }
 
+  for (const name of displayOrder) {
+    if (buckets[name].length > 0) {
+      generatedRegionGroups.push(...createRegionGroup(name, displayIcons[name], buckets[name]));
+    }
+  }
+
+  if (generateRateGroupEnabled) {
+    for (const rate of rateRegionDefinitions) {
+      if (buckets[rate.name].length > 0) {
+        generatedRegionGroups.push(...createRegionGroup(rate.name, rate.icon, buckets[rate.name]));
+      }
+    }
+  }
+
   if (otherProxies.length > 0) {
-    generatedRegionGroups.push(...createRegionGroup('其他节点', `${iconBaseUrl}WorldMap.svg`, otherProxies));
+    generatedRegionGroups.push(...createRegionGroup('其他地区', `${iconBaseUrl}WorldMap.svg`, otherProxies));
   }
 
   return generatedRegionGroups;

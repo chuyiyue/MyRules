@@ -22,7 +22,7 @@ function printDemo(api, label, meta) {
     const out = api.main(fx.typicalSubscription());
     const groups = out['proxy-groups'];
     const regionSelect = groups.filter((g) => g.type === 'select' && meta.regions.includes(g.name)).map((g) => g.name);
-    const other = groups.some((g) => g.name === '其他节点') ? ['其他节点'] : [];
+    const other = groups.some((g) => g.name === '其他地区' || g.name === '其他节点') ? ['其他地区'] : [];
     console.log(`\n  ── 覆写结果概览 (${label}) ──`);
     console.log(`     代理节点: ${out.proxies.length}`);
     console.log(`     策略组:   ${groups.length}`);
